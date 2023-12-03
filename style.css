@@ -36,6 +36,7 @@ header {
   align-items: center;
   cursor: pointer;
   gap: 10px;
+  border: none;
   border-radius: 8px;
   background: var(
     --gra-purpleblue-to-skyblue,

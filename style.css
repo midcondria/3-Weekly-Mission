@@ -207,9 +207,9 @@ a {
   section:nth-of-type(odd) {
     grid-template:
       "title title"
+      "image image"
+      "image image"
       "example example"
-      "image image"
-      "image image"
       /1fr 1fr;
   }
 

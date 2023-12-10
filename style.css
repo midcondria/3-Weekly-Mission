@@ -64,7 +64,7 @@ section.hero {
 }
 
 .slogan {
-  width: 150%;
+  width: 1200px;
   margin: 35px;
   text-align: center;
   font-family: Pretendard;
@@ -82,8 +82,8 @@ section.hero {
 }
 
 .hero-image {
-  width: 150%;
-  height: 150%;
+  width: 1200px;
+  height: 1000px;
 }
 
 section.contents {
@@ -137,8 +137,8 @@ section:nth-of-type(odd) {
 
 .content-image {
   grid-area: image;
-  width: 120%;
-  height: 100%;
+  width: 500px;
+  height: 400px;
 }
 
 .footer-inner {
@@ -172,6 +172,15 @@ a {
   .nav {
     padding: 20px 32px;
   }
+  .hero-image {
+    width: 768px;
+    height: 690px;
+  }
+  .content-image {
+    grid-area: image;
+    width: 350px;
+    height: 280px;
+  }
 }
 
 /* Moblie size ( 375px 이상 ~ 767px 이하 ) */
@@ -202,5 +211,10 @@ a {
       "image image"
       "image image"
       /1fr 1fr;
+  }
+
+  .content-image {
+    width: 120%;
+    height: 100%;
   }
 }

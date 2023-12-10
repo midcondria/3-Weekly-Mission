@@ -203,10 +203,4 @@ a {
       "image image"
       /1fr 1fr;
   }
-
-  .content-image {
-    grid-area: image;
-    width: 100%;
-    height: 100%;
-  }
 }

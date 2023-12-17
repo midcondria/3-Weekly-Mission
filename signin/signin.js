@@ -14,7 +14,7 @@ const passwordInput = document.querySelector(".sign-input-password");
 const TEST_EMAIL = "test@codeit.com";
 const TEST_PW = "codeit101";
 
-function emailCheck(e) {
+function inputCheck(e) {
   const type = e.target.type;
   const value = e.target.value;
   let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
@@ -22,28 +22,33 @@ function emailCheck(e) {
   if (type == "email") {
     if (Number(value) == 0) {
       emptyEmail.classList.remove("hidden");
+      emailInput.classList.add("error");
     } else if (!regex.test(value)) {
       wrongEmail.classList.remove("hidden");
+      emailInput.classList.add("error");
     }
   } else if (type == "password") {
     if (Number(value) == 0) {
       emptyPassword.classList.remove("hidden");
+      passwordInput.classList.add("error");
     }
   }
 }
 
 function reset(e) {
   const type = e.target.type;
-  notValidEmail.classList.add("hidden");
-  notValidPassword.classList.add("hidden");
-  emailInput.classList.remove("error");
-  passwordInput.classList.remove("error");
 
   if (type == "email") {
     emptyEmail.classList.add("hidden");
     wrongEmail.classList.add("hidden");
+    notValidEmail.classList.add("hidden");
+
+    emailInput.classList.remove("error");
   } else if (type == "password") {
     emptyPassword.classList.add("hidden");
+    notValidPassword.classList.add("hidden");
+
+    passwordInput.classList.remove("error");
   }
 }
 
@@ -68,6 +73,6 @@ function validationByEnter(e) {
 }
 
 signinBox.addEventListener("focusin", reset);
-signinBox.addEventListener("focusout", emailCheck);
+signinBox.addEventListener("focusout", inputCheck);
 signinBox.addEventListener("keydown", validationByEnter);
 signinBtn.addEventListener("click", validation);

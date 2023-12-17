@@ -59,6 +59,10 @@ span {
   font-weight: 300;
 }
 
+.sign-password {
+  position: relative;
+}
+
 .eye-button {
   position: absolute;
   bottom: 0.9rem;

@@ -29,6 +29,10 @@ input:focus {
   outline: none;
 }
 
+span {
+  color: red;
+}
+
 .signin-box {
   width: 30rem;
   display: flex;
@@ -46,8 +50,8 @@ input:focus {
   gap: 16px;
 }
 
-.sign-password {
-  position: relative;
+.hidden {
+  display: none;
 }
 
 .sign-input-label {

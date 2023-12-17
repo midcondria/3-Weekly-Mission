@@ -29,6 +29,10 @@ input:focus {
   outline: none;
 }
 
+input.error {
+  border: 1px solid var(--linkbrary-primary-color, red);
+}
+
 span {
   color: red;
 }

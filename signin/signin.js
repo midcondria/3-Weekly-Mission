@@ -1,8 +1,10 @@
 const signinBox = document.querySelector(".signin-box");
+const signinBtn = document.querySelector(".signin-btn");
+
+// 이 메시지 태그 부분은 로직 다듬으면 좀 더 깔끔하게 정리 가능할듯
 const emptyEmail = document.querySelector(".email-empty");
 const wrongEmail = document.querySelector(".email-wrong");
 const emptyPassword = document.querySelector(".password-empty");
-const signinBtn = document.querySelector(".signin-btn");
 const notValidEmail = document.querySelector(".not-valid-email");
 const notValidPassword = document.querySelector(".not-valid-password");
 
@@ -34,6 +36,9 @@ function reset(e) {
   const type = e.target.type;
   notValidEmail.classList.add("hidden");
   notValidPassword.classList.add("hidden");
+  emailInput.classList.remove("error");
+  passwordInput.classList.remove("error");
+
   if (type == "email") {
     emptyEmail.classList.add("hidden");
     wrongEmail.classList.add("hidden");
@@ -50,7 +55,8 @@ function validation() {
   } else {
     notValidEmail.classList.remove("hidden");
     notValidPassword.classList.remove("hidden");
-    console.log("돌아가");
+    emailInput.classList.add("error");
+    passwordInput.classList.add("error");
   }
 }
 

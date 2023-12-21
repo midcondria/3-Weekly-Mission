@@ -1,78 +1,68 @@
 const signinBox = document.querySelector(".signin-box");
 const signinBtn = document.querySelector(".signin-btn");
 
-// 이 메시지 태그 부분은 로직 다듬으면 좀 더 깔끔하게 정리 가능할듯
-const emptyEmail = document.querySelector(".email-empty");
-const wrongEmail = document.querySelector(".email-wrong");
-const emptyPassword = document.querySelector(".password-empty");
-const notValidEmail = document.querySelector(".not-valid-email");
-const notValidPassword = document.querySelector(".not-valid-password");
-
 const emailInput = document.querySelector(".sign-input-email");
 const passwordInput = document.querySelector(".sign-input-password");
+
+const emailErrorMsg = document.querySelector(".email-error-msg");
+const passwordErrorMsg = document.querySelector(".password-error-msg");
 
 const TEST_EMAIL = "test@codeit.com";
 const TEST_PW = "codeit101";
 
-function inputCheck(e) {
-  const type = e.target.type;
-  const value = e.target.value;
-  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+const EMPTY_EMAIL_MSG = "이메일을 입력해주세요.";
+const INVALID_EMAIL_MSG = "올바른 이메일 주소가 아닙니다.";
+const LOGIN_FAIL_MESSAGE_EMAIL = "이메일을 확인해주세요.";
 
-  if (type == "email") {
-    if (Number(value) == 0) {
-      emptyEmail.classList.remove("hidden");
-      emailInput.classList.add("error");
-    } else if (!regex.test(value)) {
-      wrongEmail.classList.remove("hidden");
-      emailInput.classList.add("error");
-    }
-  } else if (type == "password") {
-    if (Number(value) == 0) {
-      emptyPassword.classList.remove("hidden");
-      passwordInput.classList.add("error");
-    }
+const EMPTY_PASSWORD_MSG = "비밀번호를 입력해주세요.";
+const LOGIN_FAIL_MESSAGE_PASSWORD = "비밀번호를 확인해주세요.";
+
+function validateInput(inputEl, errorMsgEl, message) {
+  errorMsgEl.textContent = message;
+  if (message) {
+    inputEl.classList.add("error");
+    return;
   }
+  inputEl.classList.remove("error");
+  return;
 }
 
-function reset(e) {
-  const type = e.target.type;
+function validateEmail() {
+  const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
-  if (type == "email") {
-    emptyEmail.classList.add("hidden");
-    wrongEmail.classList.add("hidden");
-    notValidEmail.classList.add("hidden");
-
-    emailInput.classList.remove("error");
-  } else if (type == "password") {
-    emptyPassword.classList.add("hidden");
-    notValidPassword.classList.add("hidden");
-
-    passwordInput.classList.remove("error");
+  if (emailInput.value === "") {
+    return validateInput(emailInput, emailErrorMsg, EMPTY_EMAIL_MSG);
   }
+  if (!email_regex.test(emailInput.value)) {
+    return validateInput(emailInput, emailErrorMsg, INVALID_EMAIL_MSG);
+  }
+  return validateInput(emailInput, emailErrorMsg, "");
 }
 
-function validation() {
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  if (email == TEST_EMAIL && password == TEST_PW) {
+function validatePassword() {
+  if (passwordInput.value === "") {
+    return validateInput(passwordInput, passwordErrorMsg, EMPTY_PASSWORD_MSG);
+  }
+  return validateInput(passwordInput, passwordErrorMsg, "");
+}
+
+function signin() {
+  if (emailInput.value == TEST_EMAIL && passwordInput.value == TEST_PW) {
     window.location.href = "/forder.html";
   } else {
-    notValidEmail.classList.remove("hidden");
-    notValidPassword.classList.remove("hidden");
-    emailInput.classList.add("error");
-    passwordInput.classList.add("error");
+    validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
+    validateInput(passwordInput, passwordErrorMsg, LOGIN_FAIL_MESSAGE_PASSWORD);
   }
 }
 
 function validationByEnter(e) {
   if (e.key === "Enter") {
-    console.log("동작은함");
-    validation();
+    e.preventDefault();
+    signin();
   }
 }
 
-signinBox.addEventListener("focusin", reset);
-signinBox.addEventListener("focusout", inputCheck);
+emailInput.addEventListener("focusout", validateEmail);
+passwordInput.addEventListener("focusout", validatePassword);
+signinBtn.addEventListener("click", signin);
 signinBox.addEventListener("keydown", validationByEnter);
-signinBtn.addEventListener("click", validation);

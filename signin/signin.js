@@ -48,32 +48,31 @@ function validatePassword() {
   return validateInput(passwordInput, passwordErrorMsg, "");
 }
 
-function signin() {
-  const data = {
+async function signin() {
+  const request = {
     email: emailInput.value,
     password: passwordInput.value,
   };
   try {
-    fetch(URL, {
+    const response = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data) {
-          window.location.href = "/forder.html";
-        } else {
-          validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
-          validateInput(
-            passwordInput,
-            passwordErrorMsg,
-            LOGIN_FAIL_MESSAGE_PASSWORD
-          );
-        }
-      });
+      body: JSON.stringify(request),
+    });
+    const data = await response.json();
+
+    if (data.data) {
+      window.location.href = "/forder.html";
+    } else {
+      validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
+      validateInput(
+        passwordInput,
+        passwordErrorMsg,
+        LOGIN_FAIL_MESSAGE_PASSWORD
+      );
+    }
   } catch (error) {
     console.log("error fetching data", error);
   }

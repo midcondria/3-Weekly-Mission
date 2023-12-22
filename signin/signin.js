@@ -17,6 +17,8 @@ const LOGIN_FAIL_MESSAGE_EMAIL = "이메일을 확인해주세요.";
 const EMPTY_PASSWORD_MSG = "비밀번호를 입력해주세요.";
 const LOGIN_FAIL_MESSAGE_PASSWORD = "비밀번호를 확인해주세요.";
 
+const URL = "https://bootcamp-api.codeit.kr/api/sign-in";
+
 function validateInput(inputEl, errorMsgEl, message) {
   errorMsgEl.textContent = message;
   if (message) {
@@ -47,11 +49,33 @@ function validatePassword() {
 }
 
 function signin() {
-  if (emailInput.value == TEST_EMAIL && passwordInput.value == TEST_PW) {
-    window.location.href = "/forder.html";
-  } else {
-    validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
-    validateInput(passwordInput, passwordErrorMsg, LOGIN_FAIL_MESSAGE_PASSWORD);
+  const data = {
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
+  try {
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data) {
+          window.location.href = "/forder.html";
+        } else {
+          validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
+          validateInput(
+            passwordInput,
+            passwordErrorMsg,
+            LOGIN_FAIL_MESSAGE_PASSWORD
+          );
+        }
+      });
+  } catch (error) {
+    console.log("error fetching data", error);
   }
 }
 

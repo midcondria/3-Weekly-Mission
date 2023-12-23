@@ -23,6 +23,11 @@ const ALREADY_EXIST_EMAIL = "이미 존재하는 이메일입니다.";
 const URL_EMAIL_DUP_CHECK = "https://bootcamp-api.codeit.kr/api/check-email";
 const URL_SIGNUP = "https://bootcamp-api.codeit.kr/api/sign-up";
 
+const accessToken = localStorage.getItem("accessToken");
+if (accessToken) {
+  window.location.href = "/forder.html";
+}
+
 async function checkEmailDuplicate() {
   const isValid = validateEmail(emailInput, emailErrorMsg);
   if (!isValid) return;
@@ -74,6 +79,9 @@ async function signup() {
       validateInput(emailInput, emailErrorMsg, ALREADY_EXIST_EMAIL);
       return;
     }
+    const data = await response.json();
+    const accessToken = data.data.accessToken;
+    localStorage.setItem("accessToken", accessToken);
     window.location.href = "/forder.html";
   } catch (error) {
     console.log("error fetching data", error);

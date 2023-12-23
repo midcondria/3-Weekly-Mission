@@ -9,10 +9,10 @@ function validateInput(inputEl, errorMsgEl, message) {
   errorMsgEl.textContent = message;
   if (message) {
     inputEl.classList.add("error");
-    return;
+    return false;
   }
   inputEl.classList.remove("error");
-  return;
+  return true;
 }
 
 function validateEmail(emailInput, emailErrorMsg) {

@@ -18,13 +18,21 @@ const passwordCheckErrorMsg = document.querySelector(
   ".passwordcheck-error-msg"
 );
 
-const LOGIN_FAIL_MESSAGE_EMAIL = "이메일을 확인해주세요.";
+const SIGNUP_FAIL_MESSAGE_EMAIL = "중복된 이메일입니다.";
 
-const LOGIN_FAIL_MESSAGE_PASSWORD = "비밀번호를 확인해주세요.";
-
-const URL = "https://bootcamp-api.codeit.kr/api/sign-in";
+const URL = "https://bootcamp-api.codeit.kr/api/sign-up";
 
 async function signup() {
+  const isVerifed =
+    validateEmail(emailInput, emailErrorMsg) &&
+    validatePasswordWithRegex(passwordInput, passwordErrorMsg) &&
+    validatePasswordCheck(
+      passwordInput,
+      passwordCheckInput,
+      passwordCheckErrorMsg
+    );
+  if (!isVerifed) return;
+
   const request = {
     email: emailInput.value,
     password: passwordInput.value,
@@ -42,12 +50,7 @@ async function signup() {
     if (data.data) {
       window.location.href = "/forder.html";
     } else {
-      validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
-      validateInput(
-        passwordInput,
-        passwordErrorMsg,
-        LOGIN_FAIL_MESSAGE_PASSWORD
-      );
+      validateInput(emailInput, emailErrorMsg, SIGNUP_FAIL_MESSAGE_EMAIL);
     }
   } catch (error) {
     console.log("error fetching data", error);
@@ -57,7 +60,7 @@ async function signup() {
 function signupByEnter(e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    signin();
+    signup();
   }
 }
 

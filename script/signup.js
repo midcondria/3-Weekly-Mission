@@ -1,76 +1,73 @@
-const signunBox = document.querySelector(".signun-box");
-const signinBtn = document.querySelector(".signun-btn");
+import {
+  validateInput,
+  validateEmail,
+  validatePasswordWithRegex,
+} from "./validation.js";
+
+const signinBox = document.querySelector(".signup-box");
+const signinBtn = document.querySelector(".signup-btn");
 
 const emailInput = document.querySelector(".sign-input-email");
 const passwordInput = document.querySelector(".sign-input-password");
-const passwordCheckInput = document.querySelector(".sign.-input-pa");
+const passwordCheckInput = document.querySelector(".sign-input-passwordcheck");
 
 const emailErrorMsg = document.querySelector(".email-error-msg");
 const passwordErrorMsg = document.querySelector(".password-error-msg");
+const passwordCheckErrorMsg = document.querySelector(
+  ".passwordcheck-error-msg"
+);
 
-const TEST_EMAIL = "test@codeit.com";
-const TEST_PW = "codeit101";
-
-const EMPTY_EMAIL_MSG = "이메일을 입력해주세요.";
-const INVALID_EMAIL_MSG = "올바른 이메일 주소가 아닙니다.";
 const LOGIN_FAIL_MESSAGE_EMAIL = "이메일을 확인해주세요.";
 
-const EMPTY_PASSWORD_MSG = "비밀번호를 입력해주세요.";
 const LOGIN_FAIL_MESSAGE_PASSWORD = "비밀번호를 확인해주세요.";
 
-function validateInput(inputEl, errorMsgEl, message) {
-  errorMsgEl.textContent = message;
-  if (message) {
-    inputEl.classList.add("error");
-    return;
-  }
-  inputEl.classList.remove("error");
-  return;
-}
+const URL = "https://bootcamp-api.codeit.kr/api/sign-in";
 
-function validateEmail() {
-  const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+async function signin() {
+  const request = {
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
+  try {
+    const response = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+    const data = await response.json();
 
-  if (emailInput.value === "") {
-    return validateInput(emailInput, emailErrorMsg, EMPTY_EMAIL_MSG);
-  }
-  if (!email_regex.test(emailInput.value)) {
-    return validateInput(emailInput, emailErrorMsg, INVALID_EMAIL_MSG);
-  }
-  return validateInput(emailInput, emailErrorMsg, "");
-}
-
-function validatePassword() {
-  if (passwordInput.value === "") {
-    return validateInput(passwordInput, passwordErrorMsg, EMPTY_PASSWORD_MSG);
-  }
-  return validateInput(passwordInput, passwordErrorMsg, "");
-}
-
-function validatePasswordCheck() {
-  if (passwordCheckInput.value === "") {
-    return validateInput(passwordInput, passwordErrorMsg, EMPTY_PASSWORD_MSG);
-  }
-  return validateInput(passwordInput, passwordErrorMsg, "");
-}
-
-function signup() {
-  if (emailInput.value == TEST_EMAIL && passwordInput.value == TEST_PW) {
-    window.location.href = "/forder.html";
-  } else {
-    validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
-    validateInput(passwordInput, passwordErrorMsg, LOGIN_FAIL_MESSAGE_PASSWORD);
+    if (data.data) {
+      window.location.href = "/forder.html";
+    } else {
+      validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
+      validateInput(
+        passwordInput,
+        passwordErrorMsg,
+        LOGIN_FAIL_MESSAGE_PASSWORD
+      );
+    }
+  } catch (error) {
+    console.log("error fetching data", error);
   }
 }
 
-function validationByEnter(e) {
+function signinByEnter(e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    signup();
+    signin();
   }
 }
 
-emailInput.addEventListener("focusout", validateEmail);
-passwordInput.addEventListener("focusout", validatePassword);
-signinBtn.addEventListener("click", signup);
-signunBox.addEventListener("keydown", validationByEnter);
+emailInput.addEventListener("focusout", () =>
+  validateEmail(emailInput, emailErrorMsg)
+);
+passwordInput.addEventListener("focusout", () =>
+  validatePasswordWithRegex(passwordInput, passwordErrorMsg)
+);
+// passwordInput.addEventListener("focusout", () =>
+//   validatePassword(passwordCheckInput, passwordCheckErrorMsg)
+// );
+signinBtn.addEventListener("click", signin);
+signinBox.addEventListener("keydown", signinByEnter);

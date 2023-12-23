@@ -18,12 +18,36 @@ const passwordCheckErrorMsg = document.querySelector(
   ".passwordcheck-error-msg"
 );
 
-const SIGNUP_FAIL_MESSAGE_EMAIL = "중복된 이메일입니다.";
+const ALREADY_EXIST_EMAIL = "이미 존재하는 이메일입니다.";
 
-const URL = "https://bootcamp-api.codeit.kr/api/sign-up";
+const URL_EMAIL_DUP_CHECK = "https://bootcamp-api.codeit.kr/api/check-email";
+const URL_SIGNUP = "https://bootcamp-api.codeit.kr/api/sign-up";
+
+async function checkEmailDuplicate() {
+  const isValid = validateEmail(emailInput, emailErrorMsg);
+  if (!isValid) return;
+
+  const request = {
+    email: emailInput.value,
+  };
+  try {
+    const response = await fetch(URL_EMAIL_DUP_CHECK, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+    if (response.status !== 200) {
+      validateInput(emailInput, emailErrorMsg, ALREADY_EXIST_EMAIL);
+    }
+  } catch (error) {
+    console.log("error fetching data", error);
+  }
+}
 
 async function signup() {
-  const isVerifed =
+  const isValid =
     validateEmail(emailInput, emailErrorMsg) &&
     validatePasswordWithRegex(passwordInput, passwordErrorMsg) &&
     validatePasswordCheck(
@@ -31,14 +55,14 @@ async function signup() {
       passwordCheckInput,
       passwordCheckErrorMsg
     );
-  if (!isVerifed) return;
+  if (!isValid) return;
 
   const request = {
     email: emailInput.value,
     password: passwordInput.value,
   };
   try {
-    const response = await fetch(URL, {
+    const response = await fetch(URL_SIGNUP, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +74,7 @@ async function signup() {
     if (data.data) {
       window.location.href = "/forder.html";
     } else {
-      validateInput(emailInput, emailErrorMsg, SIGNUP_FAIL_MESSAGE_EMAIL);
+      validateInput(emailInput, emailErrorMsg, ALREADY_EXIST_EMAIL);
     }
   } catch (error) {
     console.log("error fetching data", error);
@@ -65,7 +89,7 @@ function signupByEnter(e) {
 }
 
 emailInput.addEventListener("focusout", () =>
-  validateEmail(emailInput, emailErrorMsg)
+  checkEmailDuplicate(emailInput, emailErrorMsg)
 );
 passwordInput.addEventListener("focusout", () =>
   validatePasswordWithRegex(passwordInput, passwordErrorMsg)

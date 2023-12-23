@@ -32,18 +32,16 @@ async function signin() {
       },
       body: JSON.stringify(request),
     });
-    const data = await response.json();
-
-    if (data.data) {
-      window.location.href = "/forder.html";
-    } else {
+    if (response.status !== 200) {
       validateInput(emailInput, emailErrorMsg, LOGIN_FAIL_MESSAGE_EMAIL);
       validateInput(
         passwordInput,
         passwordErrorMsg,
         LOGIN_FAIL_MESSAGE_PASSWORD
       );
+      return;
     }
+    window.location.href = "/forder.html";
   } catch (error) {
     console.log("error fetching data", error);
   }

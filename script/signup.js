@@ -2,6 +2,7 @@ import {
   validateInput,
   validateEmail,
   validatePasswordWithRegex,
+  validatePasswordCheck,
 } from "./validation.js";
 
 const signinBox = document.querySelector(".signup-box");
@@ -23,7 +24,7 @@ const LOGIN_FAIL_MESSAGE_PASSWORD = "비밀번호를 확인해주세요.";
 
 const URL = "https://bootcamp-api.codeit.kr/api/sign-in";
 
-async function signin() {
+async function signup() {
   const request = {
     email: emailInput.value,
     password: passwordInput.value,
@@ -53,7 +54,7 @@ async function signin() {
   }
 }
 
-function signinByEnter(e) {
+function signupByEnter(e) {
   if (e.key === "Enter") {
     e.preventDefault();
     signin();
@@ -66,8 +67,12 @@ emailInput.addEventListener("focusout", () =>
 passwordInput.addEventListener("focusout", () =>
   validatePasswordWithRegex(passwordInput, passwordErrorMsg)
 );
-// passwordInput.addEventListener("focusout", () =>
-//   validatePassword(passwordCheckInput, passwordCheckErrorMsg)
-// );
-signinBtn.addEventListener("click", signin);
-signinBox.addEventListener("keydown", signinByEnter);
+passwordCheckInput.addEventListener("focusout", () => {
+  validatePasswordCheck(
+    passwordInput,
+    passwordCheckInput,
+    passwordCheckErrorMsg
+  );
+});
+signinBtn.addEventListener("click", signup);
+signinBox.addEventListener("keydown", signupByEnter);

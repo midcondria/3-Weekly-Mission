@@ -3,6 +3,7 @@ const EMPTY_PASSWORD_MSG = "비밀번호를 입력해주세요.";
 const INVALID_EMAIL_MSG = "올바른 이메일 주소가 아닙니다.";
 const INVALID_PASSWORD_MSG =
   "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
+const MISMATCHED_PASSWORD_MSG = "비밀번호가 일치하지 않아요.";
 
 function validateInput(inputEl, errorMsgEl, message) {
   errorMsgEl.textContent = message;
@@ -44,9 +45,26 @@ function validatePasswordWithRegex(passwordInput, passwordErrorMsg) {
   return validateInput(passwordInput, passwordErrorMsg, "");
 }
 
+function validatePasswordCheck(
+  passwordInput,
+  passwordCheckInput,
+  passwordCheckErrorMsg
+) {
+  const isMatched = passwordInput.value === passwordCheckInput.value;
+  if (!isMatched) {
+    return validateInput(
+      passwordCheckInput,
+      passwordCheckErrorMsg,
+      MISMATCHED_PASSWORD_MSG
+    );
+  }
+  return validateInput(passwordCheckInput, passwordCheckErrorMsg, "");
+}
+
 export {
   validateInput,
   validateEmail,
   validatePassword,
   validatePasswordWithRegex,
+  validatePasswordCheck,
 };

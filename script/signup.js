@@ -40,6 +40,7 @@ async function checkEmailDuplicate() {
     });
     if (response.status !== 200) {
       validateInput(emailInput, emailErrorMsg, ALREADY_EXIST_EMAIL);
+      return;
     }
   } catch (error) {
     console.log("error fetching data", error);
@@ -69,13 +70,11 @@ async function signup() {
       },
       body: JSON.stringify(request),
     });
-    const data = await response.json();
-
-    if (data.data) {
-      window.location.href = "/forder.html";
-    } else {
+    if (response.status !== 200) {
       validateInput(emailInput, emailErrorMsg, ALREADY_EXIST_EMAIL);
+      return;
     }
+    window.location.href = "/forder.html";
   } catch (error) {
     console.log("error fetching data", error);
   }

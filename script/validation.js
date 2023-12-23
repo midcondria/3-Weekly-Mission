@@ -1,7 +1,8 @@
 const EMPTY_EMAIL_MSG = "이메일을 입력해주세요.";
 const EMPTY_PASSWORD_MSG = "비밀번호를 입력해주세요.";
 const INVALID_EMAIL_MSG = "올바른 이메일 주소가 아닙니다.";
-const INVALID_PASSWORD_MSG = "올바른 비밀번호가 아닙니다.";
+const INVALID_PASSWORD_MSG =
+  "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
 
 function validateInput(inputEl, errorMsgEl, message) {
   errorMsgEl.textContent = message;
@@ -32,4 +33,20 @@ function validatePassword(passwordInput, passwordErrorMsg) {
   return validateInput(passwordInput, passwordErrorMsg, "");
 }
 
-export { validateInput, validateEmail, validatePassword };
+function validatePasswordWithRegex(passwordInput, passwordErrorMsg) {
+  const password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
+  if (passwordInput.value === "") {
+    return validateInput(passwordInput, passwordErrorMsg, EMPTY_PASSWORD_MSG);
+  }
+  if (!password_regex.test(passwordInput.value)) {
+    return validateInput(passwordInput, passwordErrorMsg, INVALID_PASSWORD_MSG);
+  }
+  return validateInput(passwordInput, passwordErrorMsg, "");
+}
+
+export {
+  validateInput,
+  validateEmail,
+  validatePassword,
+  validatePasswordWithRegex,
+};

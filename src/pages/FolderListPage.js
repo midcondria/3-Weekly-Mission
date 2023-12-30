@@ -3,10 +3,10 @@ import ListPage from "../components/ListPage";
 import LinkItem from "../components/LinkItem";
 
 function FolderListPage({ folders }) {
-  console.log(folders?.folder?.links);
-  const favoriteFolder = folders.folder;
+  console.log(folders?.folder);
+  const favoriteFolder = folders?.folder;
   return (
-    <ListPage>
+    <ListPage userInfo="">
       <div style={{ textAlign: "center" }}>FolderListPage</div>
       <form className={searchBarStyles.form}>
         <input name="search" placeholder="링크를 검색해 보세요." />

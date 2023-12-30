@@ -1,6 +1,7 @@
 import styles from "./ListPage.module.css";
 
-function ListPage({ children }) {
+function ListPage({ userInfo, children }) {
+  console.log(userInfo);
   return (
     <div style={{ textAlign: "center" }}>
       ListPage

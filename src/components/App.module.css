@@ -6,10 +6,9 @@ body {
   margin: 0;
 }
 
-.body {
+.a {
   position: relative;
   text-align: center;
-  height: 300px;
   flex-grow: 1;
   background-color: chartreuse;
 }

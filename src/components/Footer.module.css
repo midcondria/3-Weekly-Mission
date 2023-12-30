@@ -1,0 +1,11 @@
+.footer {
+  position: relative;
+  color: #cfcfcf;
+  padding: 15px 0;
+  background-color: #111322;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}

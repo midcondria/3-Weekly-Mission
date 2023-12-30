@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.body {
+  position: relative;
+  text-align: center;
+  height: 300px;
+  flex-grow: 1;
+  background-color: chartreuse;
+}

@@ -38,9 +38,9 @@ function formatDate(input) {
 function LinkItem({ linkInfo }) {
   return (
     <Card className={styles.linkItem}>
-      <div className={styles.thumb}>
+      <a className={styles.thumb} href="/folder/1" target="_blank">
         <img src={linkInfo.imageSource || DEFAULT_IMAGE} alt="썸네일" />
-      </div>
+      </a>
       <div className={styles.content}>
         <p className={styles.timeDifference}>
           {calculateTimeDifference(linkInfo.createdAt)}

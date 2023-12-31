@@ -9,20 +9,25 @@ function calculateTimeDifference(input) {
   const currentDate = new Date();
   const timeDifference = currentDate - targetDate;
 
-  const seconds = Math.floor(timeDifference / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-  const months = Math.floor(days / 31);
+  const minutes = Math.floor(timeDifference / (60 * 1000));
+  const hours = Math.floor(timeDifference / (60 * 60 * 1000));
+  const days = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+  const months = Math.floor(timeDifference / (31 * 24 * 60 * 60 * 1000));
+  const years = Math.floor(timeDifference / (365 * 24 * 60 * 60 * 1000));
 
-  //   console.log(
-  //     "sec: " + seconds,
-  //     "mins: " + minutes,
-  //     "hours: " + hours,
-  //     "days: " + days,
-  //     "months: " + months
-  //   );
-  return `${days}일 전`;
+  if (years) {
+    return years === 1 ? "1 year ago" : `${years} years ago`;
+  }
+  if (months) {
+    return months === 1 ? "1 month ago" : `${months} months ago`;
+  }
+  if (days) {
+    return days === 1 ? "1 day ago" : `${days} days ago`;
+  }
+  if (hours) {
+    return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+  }
+  return minutes >= 1 ? `${minutes} minutes ago` : "1 minute ago";
 }
 
 function formatDate(input) {
@@ -38,6 +43,7 @@ function LinkItem({ linkInfo }) {
           width="320px"
           height="220px"
           src={linkInfo.imageSource || DEFAULT_IMAGE}
+          alt="썸네일"
         />
       </div>
       <div className={styles.content}>

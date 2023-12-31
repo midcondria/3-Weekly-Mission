@@ -7,8 +7,8 @@ import styles from "./FolderListPage.module.css";
 function FolderListPage({ folders }) {
   const favoriteFolder = folders?.folder;
   return (
-    <div className={styles.bg}>
-      FolderListPage
+    <div>
+      <div style={{ textAlign: "center" }}>FolderListPage</div>
       <ListPage favoriteFolder={favoriteFolder}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
@@ -18,7 +18,7 @@ function FolderListPage({ folders }) {
             alt="검색창 아이콘"
           />
         </form>
-        <div>
+        <div className={styles.linkList}>
           {favoriteFolder &&
             favoriteFolder.links.map((linkInfo) => (
               <LinkItem linkInfo={linkInfo}></LinkItem>

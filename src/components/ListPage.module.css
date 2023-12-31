@@ -1,8 +1,10 @@
 .bg {
   background-color: #f0f6ff;
+  text-align: center;
 }
 
 .container {
+  background-color: #fefefe;
   padding-top: 30px;
   margin-bottom: 100px;
 }

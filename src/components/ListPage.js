@@ -1,11 +1,24 @@
 import Container from "./Container";
 import styles from "./ListPage.module.css";
 
-function ListPage({ userInfo, children }) {
-  console.log(userInfo);
+function ListPage({ favoriteFolder, children }) {
+  console.log(favoriteFolder);
   return (
     <>
-      <div style={{ textAlign: "center" }}>ListPage</div>
+      <div className={styles.bg}>
+        ListPage
+        <div>
+          <img
+            className={styles.icon}
+            src={favoriteFolder?.owner.profileImageSource}
+            alt="폴더 주인 아이콘"
+          />
+        </div>
+        <div className={styles.texts}>
+          <p className={styles.owner}>{favoriteFolder?.owner.name}</p>
+          <h1 className={styles.folderName}>{favoriteFolder?.name}</h1>
+        </div>
+      </div>
       <Container className={styles.container}>{children}</Container>
     </>
   );

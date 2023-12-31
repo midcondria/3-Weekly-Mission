@@ -5,10 +5,3 @@
 body {
   margin: 0;
 }
-
-.a {
-  position: relative;
-  text-align: center;
-  flex-grow: 1;
-  background-color: chartreuse;
-}

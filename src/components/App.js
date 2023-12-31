@@ -27,13 +27,11 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <Nav userProfile={userProfile} />
-      <div className={styles.a}>hi</div>
       <FolderListPage folders={folders} />
-      <div className={styles.a}>bye</div>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -8,7 +8,6 @@ function FolderListPage({ folders }) {
   const favoriteFolder = folders?.folder;
   return (
     <div>
-      <div style={{ textAlign: "center" }}>FolderListPage</div>
       <ListPage favoriteFolder={favoriteFolder}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
@@ -21,7 +20,7 @@ function FolderListPage({ folders }) {
         <div className={styles.linkList}>
           {favoriteFolder &&
             favoriteFolder.links.map((linkInfo) => (
-              <LinkItem linkInfo={linkInfo}></LinkItem>
+              <LinkItem key={linkInfo.id} linkInfo={linkInfo}></LinkItem>
             ))}
         </div>
       </ListPage>

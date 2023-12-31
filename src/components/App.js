@@ -4,17 +4,21 @@ import FolderListPage from "../pages/FolderListPage";
 import styles from "./App.module.css";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import { getFolders } from "../api/api";
+import { getFolders, getUserProfile } from "../api/api";
 
 function App() {
   const [folders, setFolders] = useState([]);
+  const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getFolders();
-        if (!result) return;
-        setFolders(result);
+        const folders = await getFolders();
+        const userProfile = await getUserProfile();
+
+        if (!folders) return;
+        setFolders(folders);
+        setUserProfile(userProfile);
       } catch (error) {
         console.log(error);
       }
@@ -24,7 +28,7 @@ function App() {
 
   return (
     <div>
-      <Nav />
+      <Nav userProfile={userProfile} />
       <div className={styles.a}>hi</div>
       <FolderListPage folders={folders} />
       <div className={styles.a}>bye</div>

@@ -37,19 +37,16 @@ function formatDate(input) {
 
 function LinkItem({ linkInfo }) {
   return (
-    <Card>
+    <Card className={styles.linkItem}>
       <div className={styles.thumb}>
-        <img
-          width="320px"
-          height="220px"
-          src={linkInfo.imageSource || DEFAULT_IMAGE}
-          alt="썸네일"
-        />
+        <img src={linkInfo.imageSource || DEFAULT_IMAGE} alt="썸네일" />
       </div>
       <div className={styles.content}>
-        <p>{calculateTimeDifference(linkInfo.createdAt)}</p>
-        <p>{linkInfo.description}</p>
-        <p>{formatDate(linkInfo.createdAt)}</p>
+        <p className={styles.timeDifference}>
+          {calculateTimeDifference(linkInfo.createdAt)}
+        </p>
+        <p className={styles.description}>{linkInfo.description}</p>
+        <p className={styles.createdAt}>{formatDate(linkInfo.createdAt)}</p>
       </div>
     </Card>
   );

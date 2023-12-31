@@ -3,7 +3,6 @@ import styles from "./Nav.module.css";
 import logoImg from "../assets/logo.svg";
 import UserMenu from "./UserMenu";
 function Nav({ userProfile }) {
-  console.log(userProfile);
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>

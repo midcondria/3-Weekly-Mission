@@ -2,14 +2,14 @@ import searchBarStyles from "../components/SearchBar.module.css";
 import ListPage from "../components/ListPage";
 import LinkItem from "../components/LinkItem";
 import searchIcon from "../assets/Search.png";
+import styles from "./FolderListPage.module.css";
 
 function FolderListPage({ folders }) {
-  console.log(folders?.folder);
   const favoriteFolder = folders?.folder;
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className={styles.bg}>
       FolderListPage
-      <ListPage userInfo="">
+      <ListPage favoriteFolder={favoriteFolder}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
           <img

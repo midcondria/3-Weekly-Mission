@@ -1,3 +1,26 @@
+.bg {
+  background-color: #f0f6ff;
+}
+
 .container {
+  padding-top: 30px;
   margin-bottom: 100px;
+}
+
+.icon {
+  height: 100px;
+}
+
+.texts {
+  margin: 0;
+}
+
+.owner {
+  margin: 5px;
+}
+
+.folderName {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }

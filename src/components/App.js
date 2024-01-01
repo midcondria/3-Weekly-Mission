@@ -29,7 +29,9 @@ function App() {
   return (
     <>
       <Nav userProfile={userProfile} />
-      <FolderListPage folders={folders} />
+      <div className={styles.body}>
+        <FolderListPage folders={folders} />
+      </div>
       <Footer />
     </>
   );

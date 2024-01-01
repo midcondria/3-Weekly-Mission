@@ -5,7 +5,7 @@ import searchIcon from "../assets/Search.png";
 import styles from "./FolderListPage.module.css";
 
 function FolderListPage({ folders }) {
-  const favoriteFolder = folders?.folder;
+  const favoriteFolder = folders.folder;
   return (
     <div>
       <ListPage favoriteFolder={favoriteFolder}>

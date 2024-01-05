@@ -1,9 +1,9 @@
-import Container from "./Container";
+import Container from "../../container/Container";
 import styles from "./Nav.module.css";
-import logoImg from "../assets/logo.svg";
-import UserMenu from "./UserMenu";
+import logoImg from "../../../assets/logo.svg";
+import UserMenu from "../../userMenu/UserMenu";
 import { useEffect, useState } from "react";
-import { getUserProfile } from "../api/api";
+import { getUserProfile } from "../../../api/api";
 
 function Nav() {
   const [userProfile, setUserProfile] = useState(null);

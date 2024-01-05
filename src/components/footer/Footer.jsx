@@ -1,9 +1,9 @@
-import Container from "./Container";
+import Container from "../container/Container";
 import styles from "./Footer.module.css";
-import facebookSVG from "../assets/facebook.svg";
-import twitterSVG from "../assets/twitter.svg";
-import youtubeSVG from "../assets/youtube.svg";
-import instagramSVG from "../assets/instagram.svg";
+import facebookSVG from "../../assets/facebook.svg";
+import twitterSVG from "../../assets/twitter.svg";
+import youtubeSVG from "../../assets/youtube.svg";
+import instagramSVG from "../../assets/instagram.svg";
 
 function Footer() {
   return (

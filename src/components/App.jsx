@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
-
-import FolderListPage from "../pages/FolderListPage";
+import FolderListPage from "../pages/folderListPage/FolderListPage";
 import styles from "./App.module.css";
-import Footer from "./Footer";
-import { getFolders } from "../api/api";
-import Header from "./Header";
+import Footer from "./footer/Footer";
+import Header from "./header/Header";
 
 function App() {
   return (

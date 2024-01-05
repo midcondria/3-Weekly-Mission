@@ -1,5 +1,5 @@
-import { calculateTimeDifference, formatDate } from "../utils/dateFormatter";
-import Card from "./Card";
+import { calculateTimeDifference, formatDate } from "../../utils/dateFormatter";
+import Card from "../card/Card";
 import styles from "./LinkItem.module.css";
 
 const DEFAULT_IMAGE =

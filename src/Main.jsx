@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
-import SharedPage from "./pages/folderListPage/SharedPage";
+import SharedPage from "./pages/sharedPage/SharedPage";
 
 function Main() {
   return (

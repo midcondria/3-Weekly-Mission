@@ -26,7 +26,7 @@ function SharedPage() {
 
   return (
     <div>
-      <ListPage folderInfo={favoriteFolder}>
+      <ListPage folderInfo={favoriteFolder} isFavorite={true}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
           <img

@@ -1,7 +1,8 @@
+import classNames from "classnames";
 import styles from "./Button.module.css";
 
-function Button({ children }) {
-  return <div className={styles.button}>{children}</div>;
+function Button({ className, children }) {
+  return <div className={classNames(styles.button, className)}>{children}</div>;
 }
 
 export default Button;

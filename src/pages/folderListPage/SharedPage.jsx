@@ -4,9 +4,9 @@ import searchBarStyles from "../../components/searchBar/SearchBar.module.css";
 import ListPage from "../../components/listPage/ListPage";
 import LinkItem from "../../components/linkItem/LinkItem";
 import searchIcon from "../../assets/Search.png";
-import styles from "./FolderListPage.module.css";
+import styles from "./SharedPage.module.css";
 
-function FolderListPage() {
+function SharedPage() {
   const [folders, setFolders] = useState([]);
   const favoriteFolder = folders.folder;
 
@@ -46,4 +46,4 @@ function FolderListPage() {
   );
 }
 
-export default FolderListPage;
+export default SharedPage;

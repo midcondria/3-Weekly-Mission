@@ -1,4 +1,4 @@
-import FolderListPage from "../pages/folderListPage/FolderListPage";
+import { Outlet } from "react-router-dom";
 import styles from "./App.module.css";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
@@ -8,7 +8,7 @@ function App() {
     <>
       <Header />
       <div className={styles.body}>
-        <FolderListPage />
+        <Outlet />
       </div>
       <Footer />
     </>

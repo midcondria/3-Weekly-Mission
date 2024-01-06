@@ -5,6 +5,7 @@ import styles from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import UserMenu from "../../userMenu/UserMenu";
 import Button from "../../button/Button";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const [userProfile, setUserProfile] = useState(null);
@@ -26,9 +27,9 @@ function Nav() {
     <div className={styles.nav}>
       <Container className={styles.container}>
         <div>
-          <a href="/">
+          <Link to="/">
             <img src={logoImg} alt="홈 버튼" />
-          </a>
+          </Link>
         </div>
         {userProfile ? (
           <UserMenu userProfile={userProfile} />

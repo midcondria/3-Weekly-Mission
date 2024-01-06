@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
+import { getUserProfile } from "../../../api/api";
 import Container from "../../container/Container";
 import styles from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import UserMenu from "../../userMenu/UserMenu";
-import { useEffect, useState } from "react";
-import { getUserProfile } from "../../../api/api";
+import Button from "../../button/Button";
 
 function Nav() {
   const [userProfile, setUserProfile] = useState(null);
@@ -32,7 +33,7 @@ function Nav() {
         {userProfile ? (
           <UserMenu userProfile={userProfile} />
         ) : (
-          <div className={styles.button}>로그인</div>
+          <Button>로그인</Button>
         )}
       </Container>
     </div>

@@ -8,14 +8,23 @@ function LinkItem({ linkInfo }) {
   return (
     <Card className={styles.linkItem}>
       <a className={styles.thumb} href="/folder/1" target="_blank">
-        <img src={linkInfo.imageSource || DEFAULT_IMAGE} alt="썸네일" />
+        <img
+          src={
+            linkInfo.imageSource || linkInfo["image_source"] || DEFAULT_IMAGE
+          }
+          alt="썸네일"
+        />
       </a>
       <div className={styles.content}>
         <p className={styles.timeDifference}>
-          {calculateTimeDifference(linkInfo.createdAt)}
+          {calculateTimeDifference(
+            linkInfo.createdAt || linkInfo["created_at"]
+          )}
         </p>
         <p className={styles.description}>{linkInfo.description}</p>
-        <p className={styles.createdAt}>{formatDate(linkInfo.createdAt)}</p>
+        <p className={styles.createdAt}>
+          {formatDate(linkInfo.createdAt || linkInfo["created_at"])}
+        </p>
       </div>
     </Card>
   );

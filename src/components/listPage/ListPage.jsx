@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "../container/Container";
 import styles from "./ListPage.module.css";
 
 function ListPage({ favoriteFolder, children }) {

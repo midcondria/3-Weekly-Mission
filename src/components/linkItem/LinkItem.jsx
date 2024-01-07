@@ -1,10 +1,9 @@
-import { calculateTimeDifference, formatDate } from "../utils/dateFormatter";
-import Card from "./Card";
+import { calculateTimeDifference, formatDate } from "../../utils/dateFormatter";
+import Card from "../card/Card";
 import styles from "./LinkItem.module.css";
 
 const DEFAULT_IMAGE =
-  "https://i.namu.wiki/i/1KSjLQJ6kGnGlCaxPjhO1EzAiwCaIOSCkZsK6qd3T_bJARHiqd1XsHtZT3bKvEP_zjn6uZklJ6MsNT67pYSr4V3sQ_HRXSvTVvOu7T1ZBltd-nk7SU9RgFtIx0Yr9yOcZ4EgxCnYdoBs3oqnLALpCA.webp";
-
+  "https://i.namu.wiki/i/Bo8E9Iml9tKvX2eMSrCiwRvk1WteT3J7YuhyNrYdrIRRUeXuwm095OsiQb3bp2G2FXp2LPmY4540LbmDnvuOVGwjEcCwNgaxKfIbZFF4umTBL-gmy13c8ok8pLIB666ixWb08pt96BClk54CkNqjZw.webp";
 function LinkItem({ linkInfo }) {
   return (
     <Card className={styles.linkItem}>

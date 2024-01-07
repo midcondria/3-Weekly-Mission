@@ -1,11 +1,29 @@
-import searchBarStyles from "../components/SearchBar.module.css";
-import ListPage from "../components/ListPage";
-import LinkItem from "../components/LinkItem";
-import searchIcon from "../assets/Search.png";
+import { getFolders } from "../../api/api";
+import { useEffect, useState } from "react";
+import searchBarStyles from "../../components/searchBar/SearchBar.module.css";
+import ListPage from "../../components/listPage/ListPage";
+import LinkItem from "../../components/linkItem/LinkItem";
+import searchIcon from "../../assets/Search.png";
 import styles from "./FolderListPage.module.css";
 
-function FolderListPage({ folders }) {
+function FolderListPage() {
+  const [folders, setFolders] = useState([]);
   const favoriteFolder = folders.folder;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const folders = await getFolders();
+
+        if (!folders) return;
+        setFolders(folders);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <ListPage favoriteFolder={favoriteFolder}>

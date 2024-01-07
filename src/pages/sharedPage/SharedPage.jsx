@@ -7,16 +7,15 @@ import searchIcon from "../../assets/Search.png";
 import styles from "./SharedPage.module.css";
 
 function SharedPage() {
-  const [folders, setFolders] = useState([]);
-  const favoriteFolder = folders.folder;
+  const [folder, setFolder] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFolders();
+        const { folder } = await getFolders("sample/folder");
 
-        if (!folders) return;
-        setFolders(folders);
+        if (!folder) return;
+        setFolder(folder);
       } catch (error) {
         console.log(error);
       }
@@ -26,7 +25,7 @@ function SharedPage() {
 
   return (
     <div>
-      <ListPage folderInfo={favoriteFolder} isFavorite={true}>
+      <ListPage folderInfo={folder} isFavorite={true}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
           <img
@@ -36,8 +35,8 @@ function SharedPage() {
           />
         </form>
         <div className={styles.linkList}>
-          {favoriteFolder &&
-            favoriteFolder.links.map((linkInfo) => (
+          {folder &&
+            folder.links.map((linkInfo) => (
               <LinkItem key={linkInfo.id} linkInfo={linkInfo}></LinkItem>
             ))}
         </div>

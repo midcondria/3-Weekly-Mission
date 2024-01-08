@@ -1,21 +1,34 @@
-.folderSelctor {
+.emptyList {
+  text-align: center;
+}
+
+.folderMenu {
+}
+
+.upperMenu {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sortingMenus {
+.folderSelector {
   padding: 0;
 }
 
-.emptyList {
-  text-align: center;
+.addFolder {
+  display: none;
+}
+
+.title {
+}
+
+.editor {
+}
+
+.folderOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -23,6 +36,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+  }
+
+  .addFolder {
+    display: block;
   }
 }
 

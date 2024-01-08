@@ -37,7 +37,11 @@ function SharedPage() {
         <div className={styles.linkList}>
           {folder &&
             folder.links.map((linkInfo) => (
-              <LinkItem key={linkInfo.id} linkInfo={linkInfo}></LinkItem>
+              <LinkItem
+                key={linkInfo.id}
+                linkInfo={linkInfo}
+                isShared={true}
+              ></LinkItem>
             ))}
         </div>
       </ListPage>

@@ -27,8 +27,8 @@
 
 .favorite {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
 }
 
 .content {
@@ -68,6 +68,10 @@
   }
   .thumb img {
     max-height: 250px;
+  }
+  .favorite {
+    top: 15px;
+    right: 15px;
   }
   .content {
     height: 150px;

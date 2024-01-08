@@ -12,23 +12,12 @@
   display: none;
 }
 
-.title {
-}
-
-.editorList {
-  display: flex;
-  gap: 5px;
-}
-
-.editor {
-  display: flex;
-  align-items: center;
-  color: #9fa6b2;
-}
-
 .folderOption {
   display: flex;
   flex-direction: column;
+}
+
+.title {
 }
 
 @media (min-width: 768px) {

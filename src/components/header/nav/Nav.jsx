@@ -12,10 +12,10 @@ function Nav() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userProfile = await getUserProfile();
+        const userProfile = await getUserProfile(1);
 
-        if (!userProfile) return;
-        setUserProfile(userProfile);
+        if (!userProfile?.data) return;
+        setUserProfile(userProfile.data[0]);
       } catch (error) {
         console.log(error);
       }
@@ -26,11 +26,9 @@ function Nav() {
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>
-        <div>
-          <Link to="/">
-            <img src={logoImg} alt="홈 버튼" />
-          </Link>
-        </div>
+        <Link to="/">
+          <img src={logoImg} alt="홈 버튼" />
+        </Link>
         {userProfile ? (
           <UserMenu userProfile={userProfile} />
         ) : (

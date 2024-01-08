@@ -1,9 +1,15 @@
 .thumb {
   max-width: 650px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.thumb a {
+  width: 100%;
+  height: 100%;
 }
 
 .thumb img {
@@ -17,6 +23,12 @@
 .thumb img:hover {
   transition: all 0.3s;
   transform: scale(1.3);
+}
+
+.favorite {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .content {

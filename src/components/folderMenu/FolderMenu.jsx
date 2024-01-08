@@ -54,12 +54,11 @@ function FolderMenu({ className, onClick }) {
           />
         </svg>
       </div>
-      {isEditable && (
-        <div className={styles.folderOption}>
-          <h2 className={styles.title}>{currentFolderName}</h2>
-          <FolderEditor className={styles.folderEditor} />
-        </div>
-      )}
+
+      <div className={styles.folderOption}>
+        <h2 className={styles.title}>{currentFolderName}</h2>
+        {isEditable && <FolderEditor className={styles.folderEditor} />}
+      </div>
     </div>
   );
 }

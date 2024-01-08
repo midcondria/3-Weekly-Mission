@@ -2,9 +2,6 @@
   text-align: center;
 }
 
-.folderMenu {
-}
-
 @media (min-width: 768px) {
   .linkList {
     display: grid;

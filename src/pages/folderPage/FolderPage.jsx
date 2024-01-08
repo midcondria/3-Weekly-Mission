@@ -48,7 +48,7 @@ function FolderPage() {
             alt="검색창 아이콘"
           />
         </form>
-        <FolderMenu className={styles.FolderMenu} onClick={handleFetchClick} />
+        <FolderMenu onClick={handleFetchClick} />
         {folders?.length === 0 ? (
           <h2 className={styles.emptyList}>저장된 링크가 없습니다</h2>
         ) : (

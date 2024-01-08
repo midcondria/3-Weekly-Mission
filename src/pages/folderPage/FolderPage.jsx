@@ -9,22 +9,16 @@ import FolderMenu from "../../components/folderMenu/FolderMenu";
 
 function FolderPage() {
   const [folders, setFolders] = useState(null);
+  const [folderId, setFolderId] = useState("");
 
-  const handleFetchClick = async (folder) => {
-    try {
-      const folders = await getLinksByUserIdAndFolderId(1, folder.id);
-
-      if (!folders?.data) return;
-      setFolders([...folders.data]);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleFetchClick = (folder) => {
+    setFolderId(folder.id);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getLinksByUserIdAndFolderId(1);
+        const folders = await getLinksByUserIdAndFolderId(1, folderId);
 
         if (!folders?.data) return;
         setFolders([...folders.data]);
@@ -33,7 +27,7 @@ function FolderPage() {
       }
     };
     fetchData();
-  }, []);
+  }, [folderId]);
 
   return (
     <div>

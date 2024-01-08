@@ -1,0 +1,31 @@
+.upperMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folderSelector {
+  padding: 0;
+}
+
+.addFolder {
+  display: none;
+}
+
+.title {
+}
+
+.editor {
+}
+
+.folderOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .addFolder {
+    display: block;
+  }
+}

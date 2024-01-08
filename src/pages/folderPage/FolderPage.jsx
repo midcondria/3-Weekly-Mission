@@ -5,6 +5,7 @@ import ListPage from "../../components/listPage/ListPage";
 import LinkItem from "../../components/linkItem/LinkItem";
 import searchIcon from "../../assets/Search.png";
 import styles from "./FolderPage.module.css";
+import FolderSelector from "../../components/folderSelector/FolderSelector";
 
 function FolderPage() {
   const [folders, setFolders] = useState(null);
@@ -37,7 +38,7 @@ function FolderPage() {
         </form>
         <div className={styles.folderMenu}>
           <div className={styles.upperMenu}>
-            <ul className={styles.folderSelector}>sorting</ul>
+            <FolderSelector className={styles.folderSelector} />
             <svg
               className={styles.addFolder}
               width="16"

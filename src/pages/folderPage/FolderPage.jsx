@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFolders } from "../../api/api";
+import { getLinksByUserIdAndFolderId } from "../../api/api";
 import searchBarStyles from "../../components/searchBar/SearchBar.module.css";
 import ListPage from "../../components/listPage/ListPage";
 import LinkItem from "../../components/linkItem/LinkItem";
@@ -12,9 +12,7 @@ function FolderPage() {
 
   const handleFetchClick = async (folder) => {
     try {
-      const folders = await getFolders(
-        `users/1/links?folderId=${folder.id || ""}`
-      );
+      const folders = await getLinksByUserIdAndFolderId(1, folder.id);
 
       if (!folders?.data) return;
       setFolders([...folders.data]);
@@ -26,7 +24,7 @@ function FolderPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFolders("users/1/links");
+        const folders = await getLinksByUserIdAndFolderId(1);
 
         if (!folders?.data) return;
         setFolders([...folders.data]);

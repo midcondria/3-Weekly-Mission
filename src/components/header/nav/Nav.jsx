@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserProfile } from "../../../api/api";
+import { getUserProfileById } from "../../../api/api";
 import Container from "../../container/Container";
 import styles from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
@@ -12,7 +12,7 @@ function Nav() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userProfile = await getUserProfile(1);
+        const userProfile = await getUserProfileById(1);
 
         if (!userProfile?.data) return;
         setUserProfile(userProfile.data[0]);

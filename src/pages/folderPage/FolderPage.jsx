@@ -11,10 +11,21 @@ function FolderPage() {
   const [folders, setFolders] = useState(null);
   console.log(folders);
 
+  const handleFetchClick = async (value) => {
+    try {
+      const folders = await getFolders(`users/1/links?folderId=${value}`);
+
+      if (!folders?.data) return;
+      setFolders([...folders.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFolders("users/1/links?folderId=16");
+        const folders = await getFolders("users/1/links");
 
         if (!folders?.data) return;
         setFolders([...folders.data]);
@@ -38,7 +49,10 @@ function FolderPage() {
         </form>
         <div className={styles.folderMenu}>
           <div className={styles.upperMenu}>
-            <FolderSelector className={styles.folderSelector} />
+            <FolderSelector
+              className={styles.folderSelector}
+              onClick={handleFetchClick}
+            />
             <svg
               className={styles.addFolder}
               width="16"

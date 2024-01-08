@@ -29,6 +29,11 @@
   border-top: solid 1px #ebebeb;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .timeDifference,
 .createdAt {
   margin: 0;

@@ -16,11 +16,24 @@ function LinkItem({ linkInfo }) {
         />
       </a>
       <div className={styles.content}>
-        <p className={styles.timeDifference}>
-          {calculateTimeDifference(
-            linkInfo.createdAt || linkInfo["created_at"]
-          )}
-        </p>
+        <div className={styles.header}>
+          <p className={styles.timeDifference}>
+            {calculateTimeDifference(
+              linkInfo.createdAt || linkInfo["created_at"]
+            )}
+          </p>
+          <svg
+            width="21"
+            height="17"
+            viewBox="0 0 21 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="3.5" cy="8.5" r="1.5" fill="#333236" />
+            <circle cx="10.5" cy="8.5" r="1.5" fill="#333236" />
+            <circle cx="17.5" cy="8.5" r="1.5" fill="#333236" />
+          </svg>
+        </div>
         <p className={styles.description}>{linkInfo.description}</p>
         <p className={styles.createdAt}>
           {formatDate(linkInfo.createdAt || linkInfo["created_at"])}

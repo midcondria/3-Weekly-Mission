@@ -1,9 +1,28 @@
+.folderSelctor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sortingMenus {
+  padding: 0;
+}
+
+.emptyList {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .linkList {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    margin-top: 20px;
   }
 }
 

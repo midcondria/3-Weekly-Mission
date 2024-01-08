@@ -1,4 +1,4 @@
-import { getFolders } from "../../api/api";
+import { getFoldersSample } from "../../api/api";
 import { useEffect, useState } from "react";
 import searchBarStyles from "../../components/searchBar/SearchBar.module.css";
 import ListPage from "../../components/listPage/ListPage";
@@ -12,7 +12,7 @@ function SharedPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { folder } = await getFolders("sample/folder");
+        const { folder } = await getFoldersSample();
 
         if (!folder) return;
         setFolder(folder);

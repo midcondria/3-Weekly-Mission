@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { getFolders } from "../../api/api";
+import { getFoldersById } from "../../api/api";
 import styles from "./FolderMenu.module.css";
 import FolderSelector from "./folderSelector/FolderSelector";
 import FolderEditor from "./folderEditor/FolderEditor";
 import AddFolderButton from "./addFolderButton/AddFolderButton";
 import FloatingActionButton from "./addFolderButton/FloatingActionButton";
-
-const URL_FOLDERS = "users/1/folders";
 
 function FolderMenu({ onClick }) {
   const [folders, setFolders] = useState(null);
@@ -22,7 +20,7 @@ function FolderMenu({ onClick }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFolders(URL_FOLDERS);
+        const folders = await getFoldersById(1);
 
         if (!folders?.data) return;
         setFolders([...folders.data]);

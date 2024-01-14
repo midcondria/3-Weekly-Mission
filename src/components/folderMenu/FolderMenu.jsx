@@ -8,12 +8,12 @@ import FloatingActionButton from "./addFolderButton/FloatingActionButton";
 
 function FolderMenu({ onClick }) {
   const [folders, setFolders] = useState(null);
-  const [currentFolderName = "전체", setCurrentFolderName] = useState("전체");
+  const [currentFolderName, setCurrentFolderName] = useState("전체");
   const isEditable = currentFolderName !== "전체";
   const isMobile = window.innerWidth <= 767;
 
   const handleClick = (folder) => {
-    setCurrentFolderName(folder.name);
+    setCurrentFolderName(folder.name || "전체");
     return onClick(folder);
   };
 

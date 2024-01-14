@@ -9,12 +9,7 @@ function LinkItem({ linkInfo, isShared = false }) {
     <Card className={styles.linkItem}>
       <div className={styles.thumb}>
         <a href="/folder/1" target="_blank">
-          <img
-            src={
-              linkInfo.imageSource || linkInfo["image_source"] || DEFAULT_IMAGE
-            }
-            alt="썸네일"
-          />
+          <img src={linkInfo["image_source"] || DEFAULT_IMAGE} alt="썸네일" />
         </a>
         {isShared || (
           <svg
@@ -45,9 +40,7 @@ function LinkItem({ linkInfo, isShared = false }) {
       <div className={styles.content}>
         <div className={styles.header}>
           <p className={styles.timeDifference}>
-            {calculateTimeDifference(
-              linkInfo.createdAt || linkInfo["created_at"]
-            )}
+            {calculateTimeDifference(linkInfo["created_at"])}
           </p>
           <svg
             width="21"
@@ -62,9 +55,7 @@ function LinkItem({ linkInfo, isShared = false }) {
           </svg>
         </div>
         <p className={styles.description}>{linkInfo.description}</p>
-        <p className={styles.createdAt}>
-          {formatDate(linkInfo.createdAt || linkInfo["created_at"])}
-        </p>
+        <p className={styles.createdAt}>{formatDate(linkInfo["created_at"])}</p>
       </div>
     </Card>
   );

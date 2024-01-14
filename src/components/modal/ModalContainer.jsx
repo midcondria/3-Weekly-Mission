@@ -1,18 +1,17 @@
 import classNames from "classnames";
 import styles from "./ModalContainer.module.css";
-import AddModal from "./modalType/addModal/AddModal";
-import EditModal from "./modalType/editModal/EditModal";
-import DeleteModal from "./modalType/deleteModal/DeleteModal";
-import ShareModal from "./modalType/shareModal/ShareModal";
+import ShareFolderModal from "./modalType/shareModal/ShareFolderModal";
+import EditFolderModal from "./modalType/editFolderModal/EditFolderModal";
+import EditLinkModal from "./modalType/editLinkModal/EditLinkModal";
 
 function ModalContainer({ isOpen, modalType = "SHARE_FOLDER" }) {
   const modal = {
-    ADD_FOLDER: <AddModal.Folder />,
-    ADD_LINK: <AddModal.Link />,
-    EDIT_FOLDER_NAME: <EditModal.FolderName />,
-    DELETE_FOLDER: <DeleteModal.Folder />,
-    DELETE_LINK: <DeleteModal.Link />,
-    SHARE_FOLDER: <ShareModal.Folder />,
+    ADD_FOLDER: <EditFolderModal.AddFolder />,
+    DELETE_FOLDER: <EditFolderModal.DeleteFolder />,
+    EDIT_FOLDER_NAME: <EditFolderModal.EditFolderName />,
+    ADD_LINK: <EditLinkModal.AddLink />,
+    DELETE_LINK: <EditLinkModal.DeleteLink />,
+    SHARE_FOLDER: <ShareFolderModal />,
   };
   return (
     <div

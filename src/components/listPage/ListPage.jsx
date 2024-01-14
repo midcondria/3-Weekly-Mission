@@ -3,6 +3,8 @@ import Container from "../container/Container";
 import styles from "./ListPage.module.css";
 import linkInputStyles from "../linkInput/LinkInput.module.css";
 import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUserProfileById } from "../../api/api";
 
 function ListPage({ children, isFavorite = false }) {
   return (
@@ -16,16 +18,34 @@ function ListPage({ children, isFavorite = false }) {
 }
 
 function SharedPageHeader() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [userProfile, setUserProfile] = useState({});
+  const userId = searchParams.get("user");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await getUserProfileById(userId);
+        if (!data.length > 0) return;
+        console.log(data[0]);
+        setUserProfile(data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <img
         className={styles.icon}
-        // src={folderInfo?.owner.profileImageSource}
+        src={userProfile?.image_source}
         alt="폴더 주인 아이콘"
       />
       <div className={styles.texts}>
-        {/* <p className={styles.owner}>{folderInfo?.owner.name}</p>
-              <h1 className={styles.folderName}>{folderInfo?.name}</h1> */}
+        <p className={styles.owner}>{userProfile?.email}</p>
+        <h1 className={styles.folderName}>{userProfile?.name}</h1>
       </div>
     </>
   );

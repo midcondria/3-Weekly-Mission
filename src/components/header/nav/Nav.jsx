@@ -1,19 +1,21 @@
+import { useEffect, useState } from "react";
+import { getUserProfileById } from "../../../api/api";
 import Container from "../../container/Container";
 import styles from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import UserMenu from "../../userMenu/UserMenu";
-import { useEffect, useState } from "react";
-import { getUserProfile } from "../../../api/api";
+import Button from "../../button/Button";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const [userProfile, setUserProfile] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userProfile = await getUserProfile();
+        const userProfile = await getUserProfileById(1);
 
-        if (!userProfile) return;
-        setUserProfile(userProfile);
+        if (!userProfile?.data) return;
+        setUserProfile(userProfile.data[0]);
       } catch (error) {
         console.log(error);
       }
@@ -24,15 +26,13 @@ function Nav() {
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>
-        <div>
-          <a href="/">
-            <img src={logoImg} alt="홈 버튼" />
-          </a>
-        </div>
+        <Link to="/">
+          <img src={logoImg} alt="홈 버튼" />
+        </Link>
         {userProfile ? (
           <UserMenu userProfile={userProfile} />
         ) : (
-          <div className={styles.button}>로그인</div>
+          <Button>로그인</Button>
         )}
       </Container>
     </div>

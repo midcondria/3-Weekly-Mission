@@ -1,22 +1,21 @@
-import { getFolders } from "../../api/api";
+import { getFoldersSample } from "../../api/api";
 import { useEffect, useState } from "react";
 import searchBarStyles from "../../components/searchBar/SearchBar.module.css";
 import ListPage from "../../components/listPage/ListPage";
 import LinkItem from "../../components/linkItem/LinkItem";
 import searchIcon from "../../assets/Search.png";
-import styles from "./FolderListPage.module.css";
+import styles from "./SharedPage.module.css";
 
-function FolderListPage() {
-  const [folders, setFolders] = useState([]);
-  const favoriteFolder = folders.folder;
+function SharedPage() {
+  const [folder, setFolder] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFolders();
+        const { folder } = await getFoldersSample();
 
-        if (!folders) return;
-        setFolders(folders);
+        if (!folder) return;
+        setFolder(folder);
       } catch (error) {
         console.log(error);
       }
@@ -26,7 +25,7 @@ function FolderListPage() {
 
   return (
     <div>
-      <ListPage favoriteFolder={favoriteFolder}>
+      <ListPage folderInfo={folder} isFavorite={true}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요."></input>
           <img
@@ -36,9 +35,13 @@ function FolderListPage() {
           />
         </form>
         <div className={styles.linkList}>
-          {favoriteFolder &&
-            favoriteFolder.links.map((linkInfo) => (
-              <LinkItem key={linkInfo.id} linkInfo={linkInfo}></LinkItem>
+          {folder &&
+            folder.links.map((linkInfo) => (
+              <LinkItem
+                key={linkInfo.id}
+                linkInfo={linkInfo}
+                isShared={true}
+              ></LinkItem>
             ))}
         </div>
       </ListPage>
@@ -46,4 +49,4 @@ function FolderListPage() {
   );
 }
 
-export default FolderListPage;
+export default SharedPage;

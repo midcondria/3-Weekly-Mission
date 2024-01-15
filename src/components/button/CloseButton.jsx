@@ -1,9 +1,13 @@
 import classNames from "classnames";
 import styles from "./CloseButton.module.css";
 
-function CloseButton({ className }) {
+function CloseButton({ className, onModalCloseClick }) {
+  const handleClick = () => onModalCloseClick();
   return (
-    <button className={classNames(styles.button, className)}>
+    <button
+      className={classNames(styles.button, className)}
+      onClick={handleClick}
+    >
       <svg
         width="24"
         height="24"

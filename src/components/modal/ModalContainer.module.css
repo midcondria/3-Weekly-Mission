@@ -1,5 +1,5 @@
 .modalContainer {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,6 +11,10 @@
   z-index: 1;
 }
 
-.modalContainer.open {
-  display: flex;
+.window {
+  position: fixed;
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  text-align: center;
 }

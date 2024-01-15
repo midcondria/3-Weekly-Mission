@@ -4,7 +4,7 @@ import ShareFolderModal from "./modalType/shareModal/ShareFolderModal";
 import EditFolderModal from "./modalType/editFolderModal/EditFolderModal";
 import EditLinkModal from "./modalType/editLinkModal/EditLinkModal";
 
-function ModalContainer({ isOpen, modalType = "SHARE_FOLDER" }) {
+function ModalContainer({ isOpen, modalType }) {
   const modal = {
     ADD_FOLDER: <EditFolderModal.AddFolder />,
     DELETE_FOLDER: <EditFolderModal.DeleteFolder />,

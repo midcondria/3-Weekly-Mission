@@ -1,17 +1,34 @@
 import styles from "./FolderEditor.module.css";
 
-function FolderEditor() {
+function FolderEditor({ onModalClick }) {
+  const handleClick = (e) => {
+    const modalType = e.currentTarget.value;
+    console.log(modalType);
+    onModalClick(modalType);
+  };
   return (
     <div className={styles.folderEditor}>
-      <button className={styles.editor}>
+      <button
+        className={styles.editor}
+        value={"SHARE_FOLDER"}
+        onClick={handleClick}
+      >
         <ShareIcon />
         공유
       </button>
-      <button className={styles.editor}>
+      <button
+        className={styles.editor}
+        value={"EDIT_FOLDER_NAME"}
+        onClick={handleClick}
+      >
         <ChageNameIcon />
         이름 변경
       </button>
-      <button className={styles.editor}>
+      <button
+        className={styles.editor}
+        value={"DELETE_FOLDER"}
+        onClick={handleClick}
+      >
         <DeleteIcon />
         삭제
       </button>

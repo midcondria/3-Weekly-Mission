@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import styles from "./ModalContainer.module.css";
-import ShareFolderModal from "./modalType/shareModal/ShareFolderModal";
 import EditFolderModal from "./modalType/editFolderModal/EditFolderModal";
 import EditLinkModal from "./modalType/editLinkModal/EditLinkModal";
 
@@ -15,11 +14,13 @@ function ModalContainer({ modalType, onModalCloseClick }) {
     EDIT_FOLDER_NAME: (
       <EditFolderModal.EditFolderName onModalCloseClick={onModalCloseClick} />
     ),
+    SHARE_FOLDER: (
+      <EditFolderModal.ShareFolder onModalCloseClick={onModalCloseClick} />
+    ),
     ADD_LINK: <EditLinkModal.AddLink onModalCloseClick={onModalCloseClick} />,
     DELETE_LINK: (
       <EditLinkModal.DeleteLink onModalCloseClick={onModalCloseClick} />
     ),
-    SHARE_FOLDER: <ShareFolderModal onModalCloseClick={onModalCloseClick} />,
   };
 
   const modalRef = useRef(null);

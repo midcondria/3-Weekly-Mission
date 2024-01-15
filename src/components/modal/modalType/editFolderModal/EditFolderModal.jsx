@@ -40,7 +40,17 @@ function EditFolderNameModal({ onModalCloseClick }) {
   );
 }
 function DeleteFolderModal({ onModalCloseClick }) {
-  return <div className={stylesDeleteFolder.modal}>Delete Folder</div>;
+  return (
+    <div className={stylesDeleteFolder.modal}>
+      <CloseButton
+        className={stylesDeleteFolder.closeButton}
+        onModalCloseClick={onModalCloseClick}
+      />
+      <h2 className={stylesDeleteFolder.title}>폴더 삭제</h2>
+      <h3 className={stylesDeleteFolder.folderName}>폴더명</h3>
+      <Button className={stylesDeleteFolder.deleteButton}>삭제하기</Button>
+    </div>
+  );
 }
 
 export default EditFolderModal;

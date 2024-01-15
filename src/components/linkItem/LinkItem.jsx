@@ -6,7 +6,7 @@ import LinkMenu from "./linkMenu/LinkMenu";
 const DEFAULT_IMAGE =
   "https://i.namu.wiki/i/8AS4OSvzlQ_Tw8Jvy4g7gQb0w0JTQRf4lhvsqUYUqOcTTmeMFVBHCL72kO6PR2NDilN2i2wuZidniZgvLs0w3o8r8Xt8RgOgh-L7x1HoPju69RSHFg9LAOuyScKgcTasezzJm8g9JYUp-Vy5WHpI_Q.webp";
 
-function LinkItem({ linkInfo, isShared = false }) {
+function LinkItem({ linkInfo, onModalClick, isShared = false }) {
   return (
     <Card className={styles.linkItem}>
       <div className={styles.thumb}>
@@ -20,7 +20,7 @@ function LinkItem({ linkInfo, isShared = false }) {
           <p className={styles.timeDifference}>
             {calculateTimeDifference(linkInfo["created_at"])}
           </p>
-          <LinkMenu />
+          <LinkMenu onModalClick={onModalClick} />
         </div>
         <p className={styles.description}>{linkInfo.description}</p>
         <p className={styles.createdAt}>{formatDate(linkInfo["created_at"])}</p>

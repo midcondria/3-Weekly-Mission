@@ -29,8 +29,18 @@ function AddLinkModal({ onModalCloseClick }) {
   );
 }
 
-function DeleteLinkModal() {
-  return <div className={stylesDeleteLink.modal}>Delete Link</div>;
+function DeleteLinkModal({ onModalCloseClick }) {
+  return (
+    <div className={stylesDeleteLink.modal}>
+      <CloseButton
+        className={stylesDeleteLink.closeButton}
+        onModalCloseClick={onModalCloseClick}
+      />
+      <h2 className={stylesDeleteLink.title}>링크 삭제</h2>
+      <h3 className={stylesDeleteLink.linkUrl}>링크 주소</h3>
+      <Button className={stylesDeleteLink.deleteButton}>삭제하기</Button>
+    </div>
+  );
 }
 
 export default EditLinkModal;

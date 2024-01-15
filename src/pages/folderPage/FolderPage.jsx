@@ -63,7 +63,11 @@ function FolderPage() {
         ) : (
           <div className={styles.linkList}>
             {folders?.map((linkInfo) => (
-              <LinkItem key={linkInfo.id} linkInfo={linkInfo}></LinkItem>
+              <LinkItem
+                key={linkInfo.id}
+                linkInfo={linkInfo}
+                onModalClick={handleModalClick}
+              />
             ))}
           </div>
         )}

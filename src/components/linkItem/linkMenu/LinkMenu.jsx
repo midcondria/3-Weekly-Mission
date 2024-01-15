@@ -1,13 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./LinkMenu.module.css";
 
-export function LinkMenu({ isShared = false }) {
+export function LinkMenu({ onModalClick, isShared = false }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     setIsOpen((nextIsOpen) => !nextIsOpen);
   }, []);
+
+  const handleModalClick = (e) => {
+    const modalType = e.currentTarget.getAttribute("value");
+    console.log(e.currentTarget);
+    onModalClick(modalType);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -25,8 +31,12 @@ export function LinkMenu({ isShared = false }) {
       {isShared || <KebabButton onClick={handleClick} />}
       {isOpen && (
         <ul className={styles.popup}>
-          <li>삭제하기</li>
-          <li>폴더에 추가</li>
+          <li value="DELETE_LINK" onClick={handleModalClick}>
+            삭제하기
+          </li>
+          <li value="ADD_LINK" onClick={handleModalClick}>
+            폴더에 추가
+          </li>
         </ul>
       )}
     </div>

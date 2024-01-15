@@ -38,7 +38,7 @@ function SharedPageHeader() {
       }
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   return (
     <>

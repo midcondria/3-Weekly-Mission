@@ -6,11 +6,15 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUserProfileById } from "../../api/api";
 
-function ListPage({ children, isFavorite = false }) {
+function ListPage({ children, onModalClick, isFavorite = false }) {
   return (
     <>
       <div className={styles.bg}>
-        {isFavorite ? <SharedPageHeader /> : <FolderPageHeader />}
+        {isFavorite ? (
+          <SharedPageHeader />
+        ) : (
+          <FolderPageHeader onModalClick={onModalClick} />
+        )}
       </div>
       <Container className={styles.container}>{children}</Container>
     </>
@@ -51,7 +55,7 @@ function SharedPageHeader() {
   );
 }
 
-function FolderPageHeader() {
+function FolderPageHeader({ onModalClick }) {
   return (
     <form className={linkInputStyles.form}>
       <svg
@@ -76,7 +80,13 @@ function FolderPageHeader() {
         />
       </svg>
       <input name="link" placeholder="링크를 추가해 보세요" />
-      <Button className={linkInputStyles.button}>추가하기</Button>
+      <Button
+        className={linkInputStyles.button}
+        value="ADD_LINK"
+        onModalClick={onModalClick}
+      >
+        추가하기
+      </Button>
     </form>
   );
 }

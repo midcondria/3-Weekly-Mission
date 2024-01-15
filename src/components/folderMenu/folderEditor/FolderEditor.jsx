@@ -3,7 +3,6 @@ import styles from "./FolderEditor.module.css";
 function FolderEditor({ onModalClick }) {
   const handleClick = (e) => {
     const modalType = e.currentTarget.value;
-    console.log(modalType);
     onModalClick(modalType);
   };
   return (

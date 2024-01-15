@@ -44,7 +44,7 @@ function FolderPage() {
       {isModalOpen && (
         <ModalContainer modalType={modalType} onModalCloseClick={closeModal} />
       )}
-      <ListPage>
+      <ListPage onModalClick={handleModalClick}>
         <form className={searchBarStyles.form}>
           <input name="search" placeholder="링크를 검색해 보세요." />
           <img

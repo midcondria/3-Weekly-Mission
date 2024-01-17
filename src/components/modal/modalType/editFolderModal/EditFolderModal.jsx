@@ -6,6 +6,8 @@ import Button from "../../../button/Button";
 import CloseButton from "../../../button/CloseButton";
 import IconButton from "../../../button/IconButton";
 
+const SHARE_URL = "http://localhost:3000/shared?user=1&folder=16";
+
 function EditFolderModal() {
   return;
 }
@@ -77,7 +79,8 @@ function ShareFolderModal({ onModalCloseClick }) {
 
 function KakaoButton() {
   const { Kakao } = window;
-  const hanldeShareClick = () => {
+
+  const shareToKakao = () => {
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
@@ -85,14 +88,14 @@ function KakaoButton() {
         imageUrl:
           "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
         link: {
-          webUrl: "http://localhost:3000/shared?user=1&folder=16",
+          webUrl: SHARE_URL,
         },
       },
       buttons: [
         {
           title: "웹으로 이동",
           link: {
-            webUrl: "http://localhost:3000/shared?user=1&folder=16",
+            webUrl: SHARE_URL,
           },
         },
       ],
@@ -100,7 +103,7 @@ function KakaoButton() {
   };
 
   return (
-    <IconButton onClick={hanldeShareClick}>
+    <IconButton onClick={shareToKakao}>
       <svg
         width="42"
         height="42"
@@ -135,8 +138,12 @@ function KakaoButton() {
 }
 
 function FacebookButton() {
+  const shareToFacebook = () => {
+    const sharedLink = encodeURIComponent(SHARE_URL);
+    window.open(`http://www.facebook.com/sharer/sharer.php?u=${sharedLink}`);
+  };
   return (
-    <IconButton>
+    <IconButton onClick={shareToFacebook}>
       <>
         <svg
           width="42"

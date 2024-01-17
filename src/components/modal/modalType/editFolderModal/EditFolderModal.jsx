@@ -84,9 +84,9 @@ function KakaoButton() {
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "오늘의 디저트",
+        title: "폴더 이름",
         imageUrl:
-          "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+          "https://i.namu.wiki/i/8AS4OSvzlQ_Tw8Jvy4g7gQb0w0JTQRf4lhvsqUYUqOcTTmeMFVBHCL72kO6PR2NDilN2i2wuZidniZgvLs0w3o8r8Xt8RgOgh-L7x1HoPju69RSHFg9LAOuyScKgcTasezzJm8g9JYUp-Vy5WHpI_Q.webp",
         link: {
           webUrl: SHARE_URL,
         },

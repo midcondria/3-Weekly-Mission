@@ -142,6 +142,7 @@ function FacebookButton() {
     const sharedLink = encodeURIComponent(SHARE_URL);
     window.open(`http://www.facebook.com/sharer/sharer.php?u=${sharedLink}`);
   };
+
   return (
     <IconButton onClick={shareToFacebook}>
       <>
@@ -177,8 +178,17 @@ function FacebookButton() {
 }
 
 function CopyLinkButton() {
+  const copyToClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(SHARE_URL);
+      alert("클립보드에 링크가 복사되었어요.");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <IconButton>
+    <IconButton onClick={copyToClipBoard}>
       <svg
         width="42"
         height="42"

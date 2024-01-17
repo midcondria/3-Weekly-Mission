@@ -11,7 +11,6 @@ export function LinkMenu({ onModalClick, isShared = false }) {
 
   const handleModalClick = (e) => {
     const modalType = e.currentTarget.getAttribute("value");
-    console.log(e.currentTarget);
     onModalClick(modalType);
   };
 

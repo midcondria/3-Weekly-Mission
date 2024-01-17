@@ -1,9 +1,18 @@
 import styles from "./IconButton.module.css";
 import classNames from "classnames";
 
-function IconButton({ children, className }) {
+function IconButton({ children, className, onClick = "" }) {
+  const handleClick = () => {
+    console.log("share");
+    onClick();
+  };
   return (
-    <button className={classNames(styles.button, className)}>{children}</button>
+    <button
+      className={classNames(styles.button, className)}
+      onClick={handleClick}
+    >
+      {children}
+    </button>
   );
 }
 

@@ -42,6 +42,7 @@ function EditFolderNameModal({ onModalCloseClick }) {
     </div>
   );
 }
+
 function DeleteFolderModal({ onModalCloseClick }) {
   return (
     <div className={stylesDeleteFolder.modal}>
@@ -75,8 +76,31 @@ function ShareFolderModal({ onModalCloseClick }) {
 }
 
 function KakaoButton() {
+  const { Kakao } = window;
+  const hanldeShareClick = () => {
+    Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "오늘의 디저트",
+        imageUrl:
+          "https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+        link: {
+          webUrl: "http://localhost:3000/shared?user=1&folder=16",
+        },
+      },
+      buttons: [
+        {
+          title: "웹으로 이동",
+          link: {
+            webUrl: "http://localhost:3000/shared?user=1&folder=16",
+          },
+        },
+      ],
+    });
+  };
+
   return (
-    <IconButton>
+    <IconButton onClick={hanldeShareClick}>
       <svg
         width="42"
         height="42"
@@ -144,6 +168,7 @@ function FacebookButton() {
     </IconButton>
   );
 }
+
 function CopyLinkButton() {
   return (
     <IconButton>

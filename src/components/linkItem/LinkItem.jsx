@@ -2,16 +2,14 @@ import { calculateTimeDifference, formatDate } from "../../utils/dateFormatter";
 import Card from "../card/Card";
 import styles from "./LinkItem.module.css";
 import LinkMenu from "./linkMenu/LinkMenu";
-
-const DEFAULT_IMAGE =
-  "https://i.namu.wiki/i/8AS4OSvzlQ_Tw8Jvy4g7gQb0w0JTQRf4lhvsqUYUqOcTTmeMFVBHCL72kO6PR2NDilN2i2wuZidniZgvLs0w3o8r8Xt8RgOgh-L7x1HoPju69RSHFg9LAOuyScKgcTasezzJm8g9JYUp-Vy5WHpI_Q.webp";
+import defalutImage from "../../assets/Mika.webp";
 
 function LinkItem({ linkInfo, onModalClick, isShared = false }) {
   return (
     <Card className={styles.linkItem}>
       <div className={styles.thumb}>
         <a href="/folder/1" target="_blank">
-          <img src={linkInfo["image_source"] || DEFAULT_IMAGE} alt="썸네일" />
+          <img src={linkInfo["image_source"] || defalutImage} alt="썸네일" />
         </a>
         {isShared || <AddFavoriteButton />}
       </div>

@@ -1,6 +1,7 @@
 import Container from "@/container/pageContainer";
 import styles from "./Footer.module.css";
 import SnsButton from "../button/imageButton/SnsButton";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -8,12 +9,12 @@ function Footer() {
       <Container className={styles.container}>
         <div className={styles.info}>@codeit - 2023</div>
         <div className={styles.links}>
-          <a className="footer-link" href="privacy.html">
+          <Link className="footer-link" href="privacy.html">
             Privacy Policy
-          </a>
-          <a className="footer-link" href="faq.html">
+          </Link>
+          <Link className="footer-link" href="faq.html">
             FAQ
-          </a>
+          </Link>
         </div>
         <div className={styles.sns}>
           <SnsButton

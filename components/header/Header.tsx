@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserProfileById } from "@/lib/api";
 import UserMenu, { UserProfile } from "./userMenu/UserMenu";
-import Container from "@/container/pageContainer";
+import Container from "@/container/PageContainer";
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";

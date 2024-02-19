@@ -1,4 +1,4 @@
-import Container from "@/container/pageContainer";
+import Container from "@/container/PageContainer";
 import styles from "./Footer.module.css";
 import SnsButton from "../button/imageButton/SnsButton";
 import Link from "next/link";

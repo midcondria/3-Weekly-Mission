@@ -20,10 +20,10 @@ function FolderMenu({ onClick, onModalClick }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const folders = await getFoldersById(1);
+        const { data } = await getFoldersById(1);
 
-        if (!folders?.data) return;
-        setFolders([...folders.data]);
+        if (!data) return;
+        setFolders(data);
       } catch (error) {
         console.log(error);
       }

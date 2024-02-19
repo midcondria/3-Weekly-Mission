@@ -22,4 +22,4 @@ function useFetch(asyncFunction) {
   return [pending, error, wrappendFunction];
 }
 
-export default useFetch();
+export default useFetch;

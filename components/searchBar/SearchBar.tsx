@@ -1,11 +1,11 @@
 import { useState } from "react";
-import styles from "./SearchBar.module.css";
+import styles from "./SearchBar.module.scss";
 import Image from "next/image";
 
 export default function SearchBar({ onSearch }: any) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string>("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSearch(value);
   };

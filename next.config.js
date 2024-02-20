@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "/badges/**",
       },
+      {
+        protocol: "https",
+        hostname: "jasonwatmore.com",
+        port: "",
+        pathname: "/_content/**",
+      },
     ],
   },
 };

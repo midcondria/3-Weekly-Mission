@@ -19,7 +19,8 @@ export default function AddLinkBar() {
   };
 
   const handleClick = () => {
-    router.push(`/folder?type=addLink&link=${value}`);
+    const currentPath = router.asPath;
+    router.push(`${currentPath}?type=addLink&link=${value}`);
   };
 
   return (

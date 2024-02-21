@@ -9,8 +9,8 @@ import SearchBar from "@/components/searchBar/SearchBar";
 import styles from "@/styles/folder.module.scss";
 import LinkItem from "@/components/linkItem/LinkItem";
 import AddLinkBar from "@/pages/folder/addLinkBar/AddLinkBar";
-import Modal from "./modal/Modal";
 import FolderMenu from "./folderMenu/FolderMenu";
+import Modal from "./modal/Modal";
 
 type Link = {
   created_at: string;
@@ -23,15 +23,16 @@ type Link = {
   url: string | null;
 };
 
-export default function Folder() {
-  const router = useRouter();
-  const { type, folderId } = router.query;
+export default function Folders() {
   const [links, setLinks] = useState<Link[]>([]);
   const [keyword, setKeyword] = useState<string>("");
 
+  const router = useRouter();
+  const { type, folderId } = router.query;
+
   const handleSearch = (value: string) => {
-    console.log(value);
     setKeyword(value);
+    router.push(`${router.pathname}?keyword=${value}`);
   };
 
   useEffect(() => {
@@ -41,7 +42,6 @@ export default function Folder() {
           1,
           folderId as string
         );
-        console.log(data);
         if (!data) return;
         const filteredLinks = filterLinks(data, keyword);
         setLinks(filteredLinks);
@@ -58,18 +58,20 @@ export default function Folder() {
       <div className={styles.bg}>
         <AddLinkBar />
       </div>
-      <PageContainer className={styles.content}>
-        <SearchBar onSearch={handleSearch} />
-        <FolderMenu />
-        {links?.length === 0 ? (
-          <h2 className={styles.emptyList}>저장된 링크가 없습니다</h2>
-        ) : (
-          <div className={styles.linkList}>
-            {links?.map((linkInfo) => (
-              <LinkItem key={linkInfo.id} linkInfo={linkInfo} />
-            ))}
-          </div>
-        )}
+      <PageContainer className={styles.container}>
+        <SearchBar className={styles.searchBar} onSearch={handleSearch} />
+        <div className={styles.content}>
+          <FolderMenu />
+          {links?.length === 0 ? (
+            <h2 className={styles.emptyList}>저장된 링크가 없습니다</h2>
+          ) : (
+            <div className={styles.linkList}>
+              {links?.map((linkInfo) => (
+                <LinkItem key={linkInfo.id} linkInfo={linkInfo} />
+              ))}
+            </div>
+          )}
+        </div>
       </PageContainer>
       <Footer />
       {type && <Modal />}

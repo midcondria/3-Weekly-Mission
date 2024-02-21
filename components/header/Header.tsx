@@ -5,7 +5,7 @@ import Container from "@/container/Container";
 import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../button/Button";
+import Button from "../button/PrimaryButton";
 
 const initValue: UserProfile = {
   id: 0,

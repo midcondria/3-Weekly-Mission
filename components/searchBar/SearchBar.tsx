@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import styles from "./SearchBar.module.scss";
 import Image from "next/image";
+import classNames from "classnames";
 
-export default function SearchBar({ onSearch }: any) {
+export default function SearchBar({ className, onSearch }: any) {
+  const router = useRouter();
+  const { keyword } = router.query;
   const [value, setValue] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +25,10 @@ export default function SearchBar({ onSearch }: any) {
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={classNames(className, styles.form)}
+        onSubmit={handleSubmit}
+      >
         <Image
           className={styles.searchIcon}
           width="14"
@@ -37,7 +44,11 @@ export default function SearchBar({ onSearch }: any) {
         />
         {value.length > 0 && <ResetButton onClick={handleResetClick} />}
       </form>
-      {value.length > 0 && <h2>{value}으로 검색한 결과입니다.</h2>}
+      {keyword && (
+        <h2 className={styles.result}>
+          <span>{keyword}</span>으로 검색한 결과입니다.
+        </h2>
+      )}
     </>
   );
 }

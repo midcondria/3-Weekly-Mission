@@ -1,14 +1,17 @@
 import { useRouter } from "next/router";
+import { ModalType } from "../../modal/Modal";
 import styles from "./AddFolderButton.module.scss";
 import Image from "next/image";
 import classNames from "classnames";
 
 function AddFolderButton({ className }: any) {
   const router = useRouter();
+  const { folderId } = router.query;
 
   const handleClick = () => {
-    const currentPath = router.pathname;
-    router.push(`${currentPath}?type=addFolder`);
+    folderId
+      ? router.push(`${router.asPath}&type=${ModalType.ADD_FOLDER}`)
+      : router.push(`${router.pathname}?type=${ModalType.ADD_FOLDER}`);
   };
 
   return (
@@ -16,6 +19,7 @@ function AddFolderButton({ className }: any) {
       className={classNames(styles.addFolder, className)}
       onClick={handleClick}
     >
+      폴더 추가
       <Image
         src="/assets/add.png"
         width="16"

@@ -6,6 +6,11 @@
 
 @media (min-width: 768px) {
   .addFolder {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    color: #6d6afe;
   }
 }

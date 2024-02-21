@@ -1,4 +1,4 @@
-import Button from "@/components/button/Button";
+import Button from "@/components/button/PrimaryButton";
 import styles from "./AddLink.module.scss";
 import CloseButton from "@/components/button/closeButton/CloseButton";
 import { useModal } from "../../../Modal";

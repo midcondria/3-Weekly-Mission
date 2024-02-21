@@ -1,8 +1,8 @@
-import classNames from "classnames";
-import style from "./FolderSelector.module.scss";
 import { useEffect, useState } from "react";
 import { getFoldersByUserId } from "@/lib/api";
 import { useRouter } from "next/router";
+import classNames from "classnames";
+import style from "./FolderSelector.module.scss";
 
 type Folder = {
   created_at: string;
@@ -18,8 +18,7 @@ export default function FolderSelector({ className, onClick }: any) {
   const router = useRouter();
 
   const handleClick = () => {
-    const currentPath = router.pathname;
-    router.push(`${currentPath}?folderId=`);
+    router.push(`${router.pathname}?folderId=`);
     onClick("전체");
   };
 

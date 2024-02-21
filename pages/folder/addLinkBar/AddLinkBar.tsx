@@ -19,7 +19,7 @@ export default function AddLinkBar() {
   };
 
   const handleClick = () => {
-    const currentPath = router.asPath;
+    const currentPath = router.pathname;
     router.push(`${currentPath}?type=addLink&link=${value}`);
   };
 

@@ -20,22 +20,25 @@ export default function SearchBar({ onSearch }: any) {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <Image
-        className={styles.searchIcon}
-        width="14"
-        height="14"
-        src="/assets/Search.png"
-        alt="검색창 아이콘"
-      />
-      <input
-        name="search"
-        value={value}
-        placeholder="링크를 검색해 보세요."
-        onChange={handleChange}
-      />
-      {value.length > 0 && <ResetButton onClick={handleResetClick} />}
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Image
+          className={styles.searchIcon}
+          width="14"
+          height="14"
+          src="/assets/Search.png"
+          alt="검색창 아이콘"
+        />
+        <input
+          name="search"
+          value={value}
+          placeholder="링크를 검색해 보세요."
+          onChange={handleChange}
+        />
+        {value.length > 0 && <ResetButton onClick={handleResetClick} />}
+      </form>
+      {value.length > 0 && <h2>{value}으로 검색한 결과입니다.</h2>}
+    </>
   );
 }
 

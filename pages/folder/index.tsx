@@ -10,6 +10,7 @@ import styles from "@/styles/folder.module.scss";
 import LinkItem from "@/components/linkItem/LinkItem";
 import AddLinkBar from "@/pages/folder/addLinkBar/AddLinkBar";
 import Modal from "./modal/Modal";
+import FolderMenu from "./folderMenu/FolderMenu";
 
 type Link = {
   created_at: string;
@@ -24,7 +25,7 @@ type Link = {
 
 export default function Folder() {
   const router = useRouter();
-  const { type } = router.query;
+  const { type, folderId } = router.query;
   const [links, setLinks] = useState<Link[]>([]);
   const [keyword, setKeyword] = useState<string>("");
 
@@ -36,7 +37,10 @@ export default function Folder() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await getLinksByUserIdAndFolderId(1, "");
+        const { data } = await getLinksByUserIdAndFolderId(
+          1,
+          folderId as string
+        );
         console.log(data);
         if (!data) return;
         const filteredLinks = filterLinks(data, keyword);
@@ -46,7 +50,7 @@ export default function Folder() {
       }
     };
     fetchData();
-  }, [keyword]);
+  }, [keyword, folderId]);
 
   return (
     <>
@@ -56,6 +60,7 @@ export default function Folder() {
       </div>
       <PageContainer className={styles.content}>
         <SearchBar onSearch={handleSearch} />
+        <FolderMenu />
         {links?.length === 0 ? (
           <h2 className={styles.emptyList}>저장된 링크가 없습니다</h2>
         ) : (

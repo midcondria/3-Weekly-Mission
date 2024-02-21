@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { getLinksByUserIdAndFolderId } from "@/lib/api";
 import { filterLinks as filterLinks } from "@/lib/searchFilter";
+import { useRouter } from "next/router";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
-import PageContainer from "@/container/PageContainer";
+import PageContainer from "@/container/Container";
 import SearchBar from "@/components/searchBar/SearchBar";
 import styles from "@/styles/folder.module.scss";
 import LinkItem from "@/components/linkItem/LinkItem";
 import AddLinkBar from "@/pages/folder/addLinkBar/AddLinkBar";
+import Modal from "./modal/Modal";
 
 type Link = {
   created_at: string;
@@ -21,6 +23,8 @@ type Link = {
 };
 
 export default function Folder() {
+  const router = useRouter();
+  const { type } = router.query;
   const [links, setLinks] = useState<Link[]>([]);
   const [keyword, setKeyword] = useState<string>("");
 
@@ -63,6 +67,7 @@ export default function Folder() {
         )}
       </PageContainer>
       <Footer />
+      {type && <Modal />}
     </>
   );
 }

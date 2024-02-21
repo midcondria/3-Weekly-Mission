@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
-import styles from "./PageContainer.module.scss";
+import styles from "./Container.module.scss";
 
 type ContainerProps = {
   children: ReactNode;

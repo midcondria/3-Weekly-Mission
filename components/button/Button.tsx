@@ -5,12 +5,22 @@ import { ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
   className?: string;
-  onClick: () => void;
+  onClick: (e?: any) => void;
+  type?: "button" | "submit";
 };
 
-function Button({ className, children, onClick }: ButtonProps) {
+function Button({
+  className,
+  children,
+  onClick,
+  type = "button",
+}: ButtonProps) {
   return (
-    <button className={classNames(styles.button, className)} onClick={onClick}>
+    <button
+      className={classNames(styles.button, className)}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   );

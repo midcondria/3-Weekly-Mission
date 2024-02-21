@@ -4,6 +4,17 @@ import ReactDOM from "react-dom";
 import styles from "./Modal.module.scss";
 import AddFolder from "./modalType/folder/addFolder/AddFolder";
 import AddLink from "./modalType/link/addLink/AddLink";
+import ShareFolder from "./modalType/folder/shareFolder.tsx/ShareFolder";
+import EditFolder from "./modalType/folder/editFolder/EditFolder";
+import DeleteFolder from "./modalType/folder/deleteFolder/DeleteFolder";
+
+export enum ModalType {
+  ADD_FOLDER = "addFolder",
+  SHARE_FOLDER = "shareFolder",
+  EDIT_FOLDER = "editFolder",
+  DELETE_FOLDER = "deleteFolder",
+  ADD_LINK = "addLink",
+}
 
 type ModalContextType = {
   handleClose: () => void;
@@ -51,9 +62,15 @@ export function useModal() {
 
 const modalSelect = (type: string) => {
   switch (type) {
-    case "addFolder":
+    case ModalType.ADD_FOLDER:
       return <AddFolder />;
-    case "addLink":
+    case ModalType.SHARE_FOLDER:
+      return <ShareFolder />;
+    case ModalType.EDIT_FOLDER:
+      return <EditFolder />;
+    case ModalType.DELETE_FOLDER:
+      return <DeleteFolder />;
+    case ModalType.ADD_LINK:
       return <AddLink />;
   }
 };

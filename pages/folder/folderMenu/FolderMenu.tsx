@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./FolderMenu.module.scss";
 import FolderSelector from "./folderSelector/FolderSelector";
-import FolderEditor from "./folderEditor/FolderEditor";
 import AddFolderButton from "./addFolderButton/AddFolderButton";
 import FloatingActionButton from "./addFolderButton/FloatingActionButton";
+import FolderEditor from "./folderEditor/FolderEditor";
 
 function FolderMenu() {
   const [currentFolderName, setCurrentFolderName] = useState("전체");
@@ -29,7 +29,7 @@ function FolderMenu() {
       </div>
       <div className={styles.folderOption}>
         <h2 className={styles.title}>{currentFolderName}</h2>
-        {/* {isEditable && <FolderEditor onModalClick={onModalClick} />} */}
+        {isEditable && <FolderEditor />}
       </div>
     </>
   );

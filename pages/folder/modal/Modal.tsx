@@ -2,11 +2,11 @@ import { createContext, useContext, useRef } from "react";
 import { useRouter } from "next/router";
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.scss";
-import AddFolder from "./modalType/folder/addFolder/AddFolder";
-import AddLink from "./modalType/link/addLink/AddLink";
-import ShareFolder from "./modalType/folder/shareFolder.tsx/ShareFolder";
-import EditFolder from "./modalType/folder/editFolder/EditFolder";
-import DeleteFolder from "./modalType/folder/deleteFolder/DeleteFolder";
+import AddLink from "./modalType/addLink/AddLink";
+import AddFolder from "./modalType/addFolder/AddFolder";
+import ShareFolder from "./modalType/shareFolder.tsx/ShareFolder";
+import EditFolder from "./modalType/editFolder/EditFolder";
+import DeleteFolder from "./modalType/deleteFolder/DeleteFolder";
 
 export enum ModalType {
   ADD_FOLDER = "addFolder",

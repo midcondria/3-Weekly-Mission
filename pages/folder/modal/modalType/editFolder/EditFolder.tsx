@@ -1,4 +1,4 @@
-import { useModal } from "../../../Modal";
+import { useModal } from "@/pages/folder/modal/Modal";
 import CloseButton from "@/components/button/closeButton/CloseButton";
 import styles from "./EditFolder.module.scss";
 import Button from "@/components/button/Button";

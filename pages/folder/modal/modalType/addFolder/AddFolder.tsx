@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useModal } from "../../../Modal";
+import { useModal } from "@/pages/folder/modal/Modal";
 import style from "./AddFolder.module.scss";
 import Button from "@/components/button/Button";
 import CloseButton from "@/components/button/closeButton/CloseButton";

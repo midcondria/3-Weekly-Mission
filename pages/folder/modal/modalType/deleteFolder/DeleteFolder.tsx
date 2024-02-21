@@ -1,6 +1,6 @@
+import { useModal } from "@/pages/folder/modal/Modal";
 import CloseButton from "@/components/button/closeButton/CloseButton";
 import styles from "./DeleteFolder.module.scss";
-import { useModal } from "../../../Modal";
 import Button from "@/components/button/Button";
 
 export default function DeleteFolder() {

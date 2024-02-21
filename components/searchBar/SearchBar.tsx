@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./SearchBar.module.scss";
 import Image from "next/image";
@@ -14,11 +14,11 @@ export default function SearchBar({ className, onSearch }: any) {
     onSearch(value);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const handleResetClick = (e: any) => {
+  const handleResetClick = (e: MouseEvent) => {
     e.preventDefault();
     setValue("");
   };

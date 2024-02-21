@@ -32,12 +32,13 @@ export default function Folders() {
 
   const handleSearch = (value: string) => {
     setKeyword(value);
-    router.push(`${router.pathname}?keyword=${value}`);
+    router.push(`${router.pathname}?folderId=${folderId}&keyword=${value}`);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(folderId);
         const { data } = await getLinksByUserIdAndFolderId(
           1,
           folderId as string

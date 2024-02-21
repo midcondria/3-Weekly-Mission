@@ -1,8 +1,8 @@
-import Button from "@/components/button/PrimaryButton";
+import { useModal } from "@/pages/folder/modal/Modal";
+import { useRouter } from "next/router";
+import Button from "@/components/button/Button";
 import styles from "./AddLink.module.scss";
 import CloseButton from "@/components/button/closeButton/CloseButton";
-import { useModal } from "../../../Modal";
-import { useRouter } from "next/router";
 
 export default function AddLink() {
   const router = useRouter();

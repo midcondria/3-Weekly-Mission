@@ -9,7 +9,7 @@ type ImageButtonProps = {
   width: number;
   height: number;
   value?: string;
-  onClick: (e?: MouseEvent) => void;
+  onClick: (e?: MouseEvent<HTMLButtonElement | MouseEvent>) => void;
 };
 
 export default function ImageButton({

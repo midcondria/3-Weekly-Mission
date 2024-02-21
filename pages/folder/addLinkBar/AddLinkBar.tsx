@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-import Button from "@/components/button/PrimaryButton";
+import Button from "@/components/button/Button";
 import styles from "./AddLinkBar.module.scss";
 import Image from "next/image";
 

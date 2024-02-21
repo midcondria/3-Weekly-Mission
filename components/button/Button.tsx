@@ -1,11 +1,11 @@
+import { MouseEvent, ReactNode } from "react";
 import classNames from "classnames";
-import styles from "./PrimaryButton.module.css";
-import { ReactNode } from "react";
+import styles from "./Button.module.css";
 
 type ButtonProps = {
   children: ReactNode;
   className?: string;
-  onClick: (e?: any) => void;
+  onClick: (e?: MouseEvent<HTMLButtonElement | MouseEvent>) => void;
   type?: "button" | "submit";
 };
 

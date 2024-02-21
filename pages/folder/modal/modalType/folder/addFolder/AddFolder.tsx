@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useModal } from "../../../Modal";
 import style from "./AddFolder.module.scss";
-import Button from "@/components/button/PrimaryButton";
+import Button from "@/components/button/Button";
 import CloseButton from "@/components/button/closeButton/CloseButton";
 
 export default function AddFolder(): ReactElement {

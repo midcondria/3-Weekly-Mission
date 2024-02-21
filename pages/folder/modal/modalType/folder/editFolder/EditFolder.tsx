@@ -1,7 +1,7 @@
 import { useModal } from "../../../Modal";
 import CloseButton from "@/components/button/closeButton/CloseButton";
 import styles from "./EditFolder.module.scss";
-import Button from "@/components/button/PrimaryButton";
+import Button from "@/components/button/Button";
 
 export default function EditFolder() {
   const { handleClose } = useModal();

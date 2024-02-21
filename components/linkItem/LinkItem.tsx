@@ -2,7 +2,7 @@ import { calculateTimeDifference, formatDate } from "@/lib/dateFormatter";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import styles from "./LinkItem.module.scss";
-import LinkMenu from "./linkMenu/LinkMenu";
+// import LinkMenu from "./linkMenu/LinkMenu";
 import Link from "next/link";
 
 export default function LinkItem({ linkInfo }: any) {
@@ -23,7 +23,7 @@ export default function LinkItem({ linkInfo }: any) {
           <p className={styles.timeDifference}>
             {calculateTimeDifference(created_at)}
           </p>
-          <LinkMenu onModalClick={handleModalClick} />
+          {/* <LinkMenu onModalClick={handleModalClick} /> */}
         </div>
         <p className={styles.description}>{linkInfo.description}</p>
         <p className={styles.createdAt}>{formatDate(created_at)}</p>

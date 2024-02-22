@@ -33,11 +33,10 @@ export default function OwnerInfo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await getUserProfileById(Number(userId));
+        const data = await getUserProfileById(Number(userId));
+        if (!data) return;
         console.log(data);
-        if (!(data.length > 0)) return;
-        console.log(data[0]);
-        setUserProfile(data[0]);
+        setUserProfile(data);
       } catch (error) {
         console.log(error);
       }

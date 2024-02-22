@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getLinksByUserIdAndFolderId } from "@/lib/api";
+import { getLinksByUserIdAndFolderId, getUserProfileById } from "@/lib/api";
+import { filterLinks } from "@/lib/searchFilter";
 import SearchBar from "@/components/searchBar/SearchBar";
 import LinkItem from "@/components/linkItem/LinkItem";
 import Header from "@/components/header/Header";
@@ -22,12 +23,16 @@ type Link = {
 
 export default function Shared() {
   const [links, setLinks] = useState<Link[]>([]);
-  const router = useRouter();
+  const [keyword, setKeyword] = useState<string>("");
 
+  const router = useRouter();
   const { user: userId, folder: folderId } = router.query;
 
-  const handleFilter = (keyword: string) => {
-    console.log(keyword);
+  const handleSearch = (value: string) => {
+    setKeyword(value);
+    router.push(
+      `${router.pathname}?user=${userId}&folder=${folderId}&keyword=${value}`
+    );
   };
 
   useEffect(() => {
@@ -38,13 +43,14 @@ export default function Shared() {
           folderId as string
         );
         if (!data) return;
-        setLinks(data);
+        const filteredLinks = filterLinks(data, keyword);
+        setLinks(filteredLinks);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [userId, folderId]);
+  }, [keyword, userId, folderId]);
 
   return (
     <>
@@ -53,12 +59,17 @@ export default function Shared() {
         <OwnerInfo />
       </div>
       <Container className={styles.container}>
-        <SearchBar onFilter={handleFilter} />
-        <div className={styles.linkList}>
-          {links &&
-            links.map((linkInfo) => (
-              <LinkItem key={linkInfo.id} linkInfo={linkInfo} isShared={true} />
-            ))}
+        <SearchBar onSearch={handleSearch} />
+        <div className={styles.content}>
+          {links?.length === 0 ? (
+            <h2 className={styles.emptyList}>저장된 링크가 없습니다</h2>
+          ) : (
+            <div className={styles.linkList}>
+              {links?.map((linkInfo) => (
+                <LinkItem key={linkInfo.id} linkInfo={linkInfo} />
+              ))}
+            </div>
+          )}
         </div>
       </Container>
       <Footer />

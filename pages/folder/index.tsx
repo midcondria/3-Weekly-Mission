@@ -59,7 +59,7 @@ export default function Folders() {
         <AddLinkBar />
       </div>
       <Container className={styles.container}>
-        <SearchBar className={styles.searchBar} onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
         <div className={styles.content}>
           <FolderMenu />
           {links?.length === 0 ? (

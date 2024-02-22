@@ -4,13 +4,13 @@ import { filterLinks as filterLinks } from "@/lib/searchFilter";
 import { useRouter } from "next/router";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
-import PageContainer from "@/container/Container";
+import Container from "@/container/Container";
 import SearchBar from "@/components/searchBar/SearchBar";
-import styles from "@/styles/folder.module.scss";
 import LinkItem from "@/components/linkItem/LinkItem";
 import AddLinkBar from "@/pages/folder/addLinkBar/AddLinkBar";
 import FolderMenu from "./folderMenu/FolderMenu";
 import Modal from "./modal/Modal";
+import styles from "@/styles/folder.module.scss";
 
 type Link = {
   created_at: string;
@@ -58,7 +58,7 @@ export default function Folders() {
       <div className={styles.bg}>
         <AddLinkBar />
       </div>
-      <PageContainer className={styles.container}>
+      <Container className={styles.container}>
         <SearchBar className={styles.searchBar} onSearch={handleSearch} />
         <div className={styles.content}>
           <FolderMenu />
@@ -72,7 +72,7 @@ export default function Folders() {
             </div>
           )}
         </div>
-      </PageContainer>
+      </Container>
       <Footer />
       {type && <Modal />}
     </>

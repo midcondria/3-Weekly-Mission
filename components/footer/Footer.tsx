@@ -1,9 +1,9 @@
 import Container from "@/container/Container";
-import styles from "./Footer.module.css";
+import styles from "./Footer.module.scss";
 import SnsButton from "../button/imageButton/SnsButton";
 import Link from "next/link";
 
-function Footer() {
+export default function Footer() {
   return (
     <div className={styles.footer}>
       <Container className={styles.container}>
@@ -17,30 +17,52 @@ function Footer() {
           </Link>
         </div>
         <div className={styles.sns}>
-          <SnsButton
-            href="https://www.facebook.com/"
-            src="/assets/facebook.svg"
-            alt="페이스북 아이콘"
-          />
-          <SnsButton
-            href="https://twitter.com/"
-            src="/assets/twitter.svg"
-            alt="트위터 아이콘"
-          />
-          <SnsButton
-            href="https://www.youtube.com/"
-            src="/assets/youtube.svg"
-            alt="유튜브 아이콘"
-          />
-          <SnsButton
-            href="https://www.instagram.com/"
-            src="/assets/instagram.svg"
-            alt="인스타그램 아이콘"
-          />
+          <FaceBookButton />
+          <TwitterButton />
+          <YoutubeButton />
+          <InstagramButton />
         </div>
       </Container>
     </div>
   );
 }
 
-export default Footer;
+function FaceBookButton() {
+  return (
+    <SnsButton
+      href="https://www.facebook.com/"
+      src="/assets/facebook.svg"
+      alt="페이스북 아이콘"
+    />
+  );
+}
+
+function TwitterButton() {
+  return (
+    <SnsButton
+      href="https://twitter.com/"
+      src="/assets/twitter.svg"
+      alt="트위터 아이콘"
+    />
+  );
+}
+
+function YoutubeButton() {
+  return (
+    <SnsButton
+      href="https://www.youtube.com/"
+      src="/assets/youtube.svg"
+      alt="유튜브 아이콘"
+    />
+  );
+}
+
+function InstagramButton() {
+  return (
+    <SnsButton
+      href="https://www.instagram.com/"
+      src="/assets/instagram.svg"
+      alt="인스타그램 아이콘"
+    />
+  );
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getLinksByUserIdAndFolderId, getUserProfileById } from "@/lib/api";
+import { getLinksByUserIdAndFolderId } from "@/lib/api";
 import { filterLinks } from "@/lib/searchFilter";
 import SearchBar from "@/components/searchBar/SearchBar";
 import LinkItem from "@/components/linkItem/LinkItem";

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "./UserMenu.module.css";
+import styles from "./UserMenu.module.scss";
+import ImageButton from "@/components/button/imageButton/ImageButton";
 
 export type UserProfile = {
   id: number;
@@ -11,11 +11,20 @@ export type UserProfile = {
 
 function UserMenu({ userProfile }: { userProfile: UserProfile }) {
   const { image_source, email } = userProfile;
+
+  const handleClick = () => {
+    console.log("유저 프로필 클릭");
+  };
   return (
     <div className={styles.userMenu}>
-      <button className={styles.iconButton}>
-        <Image src={image_source} width="28" height="28" alt="유저 메뉴" />
-      </button>
+      <ImageButton
+        className={styles.iconButton}
+        src={image_source}
+        width={28}
+        height={28}
+        onClick={handleClick}
+        alt="유저 메뉴"
+      />
       <div>{email}</div>
     </div>
   );

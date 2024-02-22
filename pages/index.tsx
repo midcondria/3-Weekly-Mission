@@ -1,8 +1,16 @@
 import { Inter } from "next/font/google";
 import styles from "@/styles/home.module.scss";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  return <div>홈페이지</div>;
+  return (
+    <div className={styles.temp}>
+      홈페이지
+      <Link href={"/folder"}>
+        <button>폴더 페이지로</button>
+      </Link>
+    </div>
+  );
 }

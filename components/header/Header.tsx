@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getUserProfileById } from "@/lib/api";
 import UserMenu, { UserProfile } from "./userMenu/UserMenu";
 import Container from "@/container/Container";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../button/Button";
@@ -17,6 +17,11 @@ const initValue: UserProfile = {
 
 export default function Header() {
   const [userProfile, setUserProfile] = useState<UserProfile>(initValue);
+
+  const handleClick = () => {
+    console.log("로그인");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,7 +44,7 @@ export default function Header() {
         {userProfile ? (
           <UserMenu userProfile={userProfile} />
         ) : (
-          <Button>로그인</Button>
+          <Button onClick={handleClick}>로그인</Button>
         )}
       </Container>
     </div>

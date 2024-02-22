@@ -2,18 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.folderSelector {
-  padding: 0;
-}
+  .folderSelector {
+    padding: 0;
+  }
 
-.addFolderFAB {
-  position: fixed;
-  right: 50%;
-  transform: translate(50%, 50%);
-  bottom: 101px;
-  z-index: 1;
+  .addFolderFAB {
+    position: fixed;
+    right: 50%;
+    transform: translate(50%, 50%);
+    bottom: 101px;
+    z-index: 1;
+  }
 }
 
 .folderOption {

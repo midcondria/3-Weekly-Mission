@@ -25,7 +25,7 @@ export default function FolderMenu() {
 
     const fetchData = async () => {
       try {
-        const folder = await getFolderInfoByFolderId(folderId);
+        const folder = await getFolderInfoByFolderId(folderId as string);
         if (!folder) return;
         setCurrentFolderName(folder.name);
       } catch (error) {
@@ -45,7 +45,7 @@ export default function FolderMenu() {
         {isMobile ? (
           <FloatingActionButton className={styles.addFolderFAB} />
         ) : (
-          <AddFolderButton className={styles.addFolder} />
+          <AddFolderButton />
         )}
       </div>
       <div className={styles.folderOption}>

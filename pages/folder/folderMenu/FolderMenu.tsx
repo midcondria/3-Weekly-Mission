@@ -26,7 +26,6 @@ export default function FolderMenu() {
     const fetchData = async () => {
       try {
         const folder = await getFolderInfoByFolderId(folderId);
-        console.log(folder);
         if (!folder) return;
         setCurrentFolderName(folder.name);
       } catch (error) {

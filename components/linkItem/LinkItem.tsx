@@ -2,13 +2,11 @@ import { calculateTimeDifference, formatDate } from "@/lib/dateFormatter";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import styles from "./LinkItem.module.scss";
-// import LinkMenu from "./linkMenu/LinkMenu";
 import Link from "next/link";
+import LinkMenu from "./linkMenu/LinkMenu";
 
 export default function LinkItem({ linkInfo }: any) {
   const { image_source, created_at } = linkInfo;
-
-  const handleModalClick = () => console.log("modal");
 
   return (
     <Card className={styles.linkItem}>
@@ -23,7 +21,7 @@ export default function LinkItem({ linkInfo }: any) {
           <p className={styles.timeDifference}>
             {calculateTimeDifference(created_at)}
           </p>
-          {/* <LinkMenu onModalClick={handleModalClick} /> */}
+          <LinkMenu linkInfo={linkInfo} />
         </div>
         <p className={styles.description}>{linkInfo.description}</p>
         <p className={styles.createdAt}>{formatDate(created_at)}</p>

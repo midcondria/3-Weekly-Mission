@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Button from "@/components/button/Button";
 import styles from "./AddLinkBar.module.scss";
 import Image from "next/image";
+import { ModalType } from "../modal/Modal";
 
 export default function AddLinkBar() {
   const [value, setValue] = useState("");
@@ -22,8 +23,10 @@ export default function AddLinkBar() {
 
   const handleClick = () => {
     folderId
-      ? router.push(`${router.asPath}&type=addLink&link=${value}`)
-      : router.push(`${router.pathname}?type=addLink&link=${value}`);
+      ? router.push(`${router.asPath}&type=${ModalType.ADD_LINK}&link=${value}`)
+      : router.push(
+          `${router.pathname}?type=${ModalType.ADD_LINK}&link=${value}`
+        );
   };
 
   return (

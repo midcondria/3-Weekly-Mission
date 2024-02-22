@@ -7,6 +7,7 @@ import AddFolder from "./modalType/addFolder/AddFolder";
 import ShareFolder from "./modalType/shareFolder.tsx/ShareFolder";
 import EditFolder from "./modalType/editFolder/EditFolder";
 import DeleteFolder from "./modalType/deleteFolder/DeleteFolder";
+import DeleteLinkModal from "./modalType/deleteLink/DeleteLink";
 
 export enum ModalType {
   ADD_FOLDER = "addFolder",
@@ -14,6 +15,7 @@ export enum ModalType {
   EDIT_FOLDER = "editFolder",
   DELETE_FOLDER = "deleteFolder",
   ADD_LINK = "addLink",
+  DELETE_LINK = "deleteLink",
 }
 
 type ModalContextType = {
@@ -72,5 +74,7 @@ const modalSelect = (type: string) => {
       return <DeleteFolder />;
     case ModalType.ADD_LINK:
       return <AddLink />;
+    case ModalType.DELETE_LINK:
+      return <DeleteLinkModal />;
   }
 };

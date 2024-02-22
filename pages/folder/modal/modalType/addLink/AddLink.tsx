@@ -7,10 +7,12 @@ import CloseButton from "@/components/button/closeButton/CloseButton";
 export default function AddLink() {
   const router = useRouter();
   const { link } = router.query;
+
   const { handleClose } = useModal();
 
   const handleClick = () => {
-    console.log("링크 추가");
+    alert("링크 추가");
+    handleClose();
   };
 
   return (

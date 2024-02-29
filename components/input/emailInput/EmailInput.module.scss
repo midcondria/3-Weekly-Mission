@@ -1,0 +1,17 @@
+.container {
+  span {
+    color: red;
+  }
+
+  .inputLabel {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .input {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

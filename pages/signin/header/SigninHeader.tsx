@@ -1,12 +1,12 @@
 import ImageButton from "@/components/button/imageButton/ImageButton";
-import styles from "./SignupHeader.module.scss";
+import styles from "./SigninHeader.module.scss";
 import Link from "next/link";
 
 type SignupHeaderProps = {
   onClick: () => void;
 };
 
-export default function SignupHeader({ onClick }: SignupHeaderProps) {
+export default function SigninHeader({ onClick }: SignupHeaderProps) {
   return (
     <div className={styles.header}>
       <ImageButton
@@ -18,8 +18,8 @@ export default function SignupHeader({ onClick }: SignupHeaderProps) {
         onClick={onClick}
       />
       <div className={styles.headerText}>
-        이미 회원이신가요?
-        <Link href="/signin">로그인 하기</Link>
+        회원이 아니신가요?
+        <Link href="/signup">회원 가입하기</Link>
       </div>
     </div>
   );

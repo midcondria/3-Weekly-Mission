@@ -50,8 +50,26 @@ export async function getFolderInfoByFolderId(folderId: string) {
   return data[0];
 }
 
+export async function checkEmail(email: string) {
+  const { data } = await axios.post(`${BASE_URL}/users/check-email`, { email });
+  console.log(data);
+  if (!data) {
+    throw new Error("이메일 중복 확인에 실패했습니다.");
+  }
+  return data;
+}
+
 export async function createUser(userData: User) {
   const { data } = await axios.post(`${BASE_URL}/auth/sign-up`, userData);
+
+  if (!data) {
+    throw new Error("회원가입에 실패했습니다.");
+  }
+  return data;
+}
+
+export async function login(loginRequest: User) {
+  const { data } = await axios.post(`${BASE_URL}/auth/sign-in`, loginRequest);
 
   if (!data) {
     throw new Error("회원가입에 실패했습니다.");

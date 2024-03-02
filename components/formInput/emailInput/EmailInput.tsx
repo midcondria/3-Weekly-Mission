@@ -6,6 +6,7 @@ type EmailInputProps = {
   name: string;
   register: UseFormRegister<any>;
   placeHolder?: string;
+  onBlur?: () => void;
 };
 
 export default function EmailInput({
@@ -13,6 +14,7 @@ export default function EmailInput({
   name,
   register,
   placeHolder,
+  onBlur,
 }: EmailInputProps) {
   return (
     <div className={styles.input}>
@@ -26,6 +28,7 @@ export default function EmailInput({
           },
         })}
         placeholder={placeHolder}
+        onBlur={onBlur}
       />
     </div>
   );

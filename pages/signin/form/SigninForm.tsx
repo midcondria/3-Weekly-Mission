@@ -1,26 +1,25 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { checkEmail, createUser } from "@/lib/api";
 import { useRouter } from "next/router";
+import { login } from "@/lib/api";
 import EmailInput from "@/components/formInput/emailInput/EmailInput";
 import PasswordInput from "@/components/formInput/passwordInput/PasswordInput";
-import styles from "./SignupForm.module.scss";
+import styles from "./SigninForm.module.scss";
 import Button from "@/components/button/Button";
 
-type SignupInputs = {
+type SigninInputs = {
   email: string;
   password: string;
-  passwordCheck: string;
 };
 
-export default function SignupForm() {
+export default function SigninForm() {
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
     setError,
-  } = useForm<SignupInputs>({ mode: "onChange" });
+  } = useForm<SigninInputs>({ mode: "onChange" });
   const [eyeOpen, setEyeOpen] = useState<boolean>(false);
 
   const router = useRouter();
@@ -34,41 +33,30 @@ export default function SignupForm() {
   };
 
   const handleClick = async () => {
-    const { email, password, passwordCheck } = getValues();
+    const { email, password } = getValues();
 
     const isValid = () => {
-      if (
-        email.length == 0 ||
-        password.length == 0 ||
-        passwordCheck.length == 0
-      ) {
+      if (email.length == 0 || password.length == 0) {
         alert("빈 칸이 있으면 안돼용");
         return false;
       }
-      if (password !== passwordCheck) {
-        setError("passwordCheck", { message: "비밀번호가 일치하지 않아요." });
-        return false;
-      }
-      return Object.keys(errors).length === 0 && password === passwordCheck;
+      return Object.keys(errors).length === 0;
     };
 
     if (isValid()) {
       try {
-        await checkEmail(email);
-        const { accessToken } = await createUser({
-          email,
-          password,
-        });
+        const { accessToken } = await login({ email, password });
         localStorage.setItem("accessToken", accessToken);
         router.push("/folder");
       } catch (error) {
-        setError("email", { message: "이미 존재하는 이메일입니다." });
+        setError("email", { message: "이메일을 확인해 주세요." });
+        setError("password", { message: "비밀번호를 확인해 주세요." });
       }
     }
   };
 
   return (
-    <form className={styles.signupForm} onSubmit={handleSubmit(handleClick)}>
+    <form className={styles.signinForm} onSubmit={handleSubmit(handleClick)}>
       <div className={styles.container}>
         <div className={styles.inputLabel}>이메일</div>
         <EmailInput
@@ -89,35 +77,19 @@ export default function SignupForm() {
           register={register}
           eyeOpen={eyeOpen}
           onClick={toggleEncryptPassword}
-          placeHolder="영문, 숫자를 조합해 8자 이상 입력해 주세요."
+          placeHolder="비밀번호를 입력해 주세요."
         />
         {errors.password && (
           <span className={styles.errorMsg}>{errors.password.message}</span>
         )}
       </div>
-      <div className={styles.container}>
-        <div className={styles.inputLabel}>비밀번호 확인</div>
-        <PasswordInput
-          hasError={errors.passwordCheck}
-          name="passwordCheck"
-          register={register}
-          eyeOpen={eyeOpen}
-          onClick={toggleEncryptPassword}
-          placeHolder="비밀번호와 일치하는 값을 입력해 주세요."
-        />
-        {errors.passwordCheck && (
-          <span className={styles.errorMsg}>
-            {errors.passwordCheck.message}
-          </span>
-        )}
-      </div>
 
       <Button
         type="submit"
-        className={styles.signupButton}
+        className={styles.signinButton}
         onClick={handleClick}
       >
-        회원가입
+        로그인
       </Button>
     </form>
   );

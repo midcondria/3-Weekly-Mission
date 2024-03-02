@@ -15,5 +15,31 @@
     flex-direction: column;
     justify-content: center;
     gap: 30px;
+
+    .socialLogin {
+      height: 66px;
+      border-radius: 8px;
+      border: 1px solid #ccd5e3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: #e7effb;
+      font-size: 14px;
+
+      .snsButtons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+
+        button {
+          cursor: pointer;
+          height: 42px;
+          border: none;
+          background: none;
+        }
+      }
+    }
   }
 }
